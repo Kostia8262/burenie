@@ -19,10 +19,14 @@ Options -Indexes
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
-  # --- http -> https (включить после выпуска Let's Encrypt) ----------------
-  # RewriteCond %{HTTPS} !=on
-  # RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+  # --- http -> https -------------------------------------------------------
+  # nginx хостинга апекс на https НЕ переводит (проверено 19.09.2026: отдаёт
+  # 200 по http), поэтому делаем сами. Два условия, а не одно: за прокси
+  # %{HTTPS} может быть недоступен, тогда сработает X-Forwarded-Proto —
+  # иначе правило зациклится. На этом сервере корректны оба.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
   # --- всё остальное во фронт-контроллер -----------------------------------
   RewriteCond %{REQUEST_FILENAME} !-f
