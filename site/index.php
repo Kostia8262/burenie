@@ -18,6 +18,7 @@ require __DIR__ . '/inc/config.php';
 require __DIR__ . '/inc/helpers.php';
 require __DIR__ . '/inc/core.php';
 require __DIR__ . '/inc/parts/icons.php';
+require __DIR__ . '/inc/parts/analytics.php';
 require __DIR__ . '/inc/parts/directory.php';
 require __DIR__ . '/inc/layout.php';
 

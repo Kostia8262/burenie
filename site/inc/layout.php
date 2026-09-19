@@ -72,6 +72,7 @@ function page_start(array $m): void
     if (!empty($m['schema'])) {
         echo schema($m['schema']);
     }
+    echo analytics_head();
     ?>
 </head>
 <body>

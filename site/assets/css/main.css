@@ -20,6 +20,7 @@
   --ink-3: #7b8f9c;
   --on-deep: #e8f1f6;
   --on-deep-2: #9bb6c4;
+  --on-deep-3: #93a8b5;
 
   /* линии */
   --line: #d7e3ea;
@@ -33,10 +34,18 @@
   --blue-05: #eef5fa;
   --blue-10: #dbe9f3;
   --sky: #2e9bc4;
+  --sky-600: #1c7391;   /* тот же оттенок, но читаемый текстом на светлом */
 
-  /* действие */
+  /* действие.
+     Фирменный оранжевый остаётся точно таким, как в референсе. Белый текст
+     на нём даёт всего 2.79:1, поэтому подпись кнопки — тёмная (5.83:1).
+     Оранжевый ТЕКСТОМ на светлом фоне берём затемнённый --or-600 (4.58:1),
+     на тёмном фоне — светлый --or-hi. Яркий --or заливкой: кнопки, маркеры,
+     подчёркивания, иконки. */
   --or: #ef7b1c;
   --or-hi: #ff8c30;
+  --or-600: #bb5a0d;
+  --or-700: #a04a09;
   --or-lo: #c76210;
   --or-05: #fdf2e8;
 
@@ -119,7 +128,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--or);
+  outline: 2px solid var(--or-600);
   outline-offset: 3px;
   border-radius: 5px;
 }
@@ -257,6 +266,10 @@ p {
   color: var(--on-deep-2);
 }
 
+.sec--deep .note {
+  color: var(--on-deep-3);
+}
+
 .sec-head {
   margin-bottom: clamp(2rem, 3.8vw, 3.25rem);
 }
@@ -305,8 +318,9 @@ p {
 
 .btn {
   --btn-bg: var(--or);
-  --btn-fg: #fff;
+  --btn-fg: var(--ink);
   --btn-bd: var(--or);
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -316,7 +330,6 @@ p {
   color: var(--btn-fg);
   border: 1px solid var(--btn-bd);
   border-radius: var(--r-sm);
-  font-weight: 600;
   font-size: 1rem;
   line-height: 1.25;
   text-decoration: none;
@@ -345,11 +358,13 @@ p {
 
 .btn--blue {
   --btn-bg: var(--blue);
+  --btn-fg: #fff;
   --btn-bd: var(--blue);
 }
 
 .btn--blue:hover {
   --btn-bg: var(--blue-hi);
+  --btn-fg: #fff;
   --btn-bd: var(--blue-hi);
 }
 
@@ -486,7 +501,7 @@ p {
 }
 
 .hdr__tel:hover {
-  color: var(--or);
+  color: var(--or-600);
 }
 
 .burger {
@@ -660,7 +675,7 @@ p {
   margin: 1.2rem 0 0;
   font-size: clamp(1.12rem, 1.65vw, 1.42rem);
   font-weight: 600;
-  color: var(--sky);
+  color: var(--sky-600);
   letter-spacing: -0.02em;
   max-width: 34ch;
 }
@@ -779,7 +794,7 @@ p {
 }
 
 .dir__head .ico--lg {
-  color: var(--sky);
+  color: var(--sky-600);
   margin-top: 0.15rem;
 }
 
@@ -884,7 +899,7 @@ p {
   padding-top: 0.9rem;
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--or);
+  color: var(--or-600);
 }
 
 .more .ico {
@@ -1241,7 +1256,7 @@ p {
 }
 
 .faq summary:hover {
-  color: var(--or);
+  color: var(--or-600);
 }
 
 .faq summary::after {
@@ -1551,7 +1566,7 @@ p {
 }
 
 .phead__meta b {
-  color: var(--or);
+  color: var(--or-600);
 }
 
 /* ===================== CTA ===================== */
@@ -1707,7 +1722,7 @@ p {
 }
 
 .tel-big:hover {
-  color: var(--or);
+  color: var(--or-600);
 }
 
 .mapbox {

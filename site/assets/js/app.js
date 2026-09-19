@@ -4,6 +4,23 @@
 
   var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- цели аналитики ---------- */
+  function goal(name) {
+    try {
+      if (window.ym && window.SOS_YM) window.ym(window.SOS_YM, "reachGoal", name);
+      if (window.gtag) window.gtag("event", name);
+    } catch (e) {
+      /* счётчик не должен ломать страницу */
+    }
+  }
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (a) goal("phone_click");
+    var t = e.target.closest && e.target.closest('a[href^="https://t.me/"]');
+    if (t) goal("telegram_click");
+  });
+
   /* ---------- меню ---------- */
   var burger = document.querySelector(".burger");
   var nav = document.getElementById("nav");
@@ -95,7 +112,10 @@
             box.textContent = res.msg;
             box.hidden = false;
           }
-          if (res.ok) form.reset();
+          if (res.ok) {
+            form.reset();
+            goal("lead_sent");
+          }
         })
         .catch(function () {
           if (box) {
