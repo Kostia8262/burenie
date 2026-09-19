@@ -176,9 +176,14 @@ page_start([
     <div class="posts">
       <?php foreach (array_slice(ARTICLES, 0, 3, true) as $slug => $a): ?>
         <a class="post" href="<?= e(article_url($slug)) ?>">
-          <time datetime="<?= e($a['date']) ?>"><?= e(ru_date($a['date'])) ?></time>
+          <span class="post__meta">
+            <span class="post__topic"><?= e($a['topic']) ?></span>
+            <time datetime="<?= e($a['date']) ?>"><?= e(ru_date($a['date'])) ?></time>
+            <span class="post__time"><?= read_time($slug) ?> мин</span>
+          </span>
           <h3><?= e($a['title']) ?></h3>
           <p><?= e($a['excerpt']) ?></p>
+          <span class="more">Читать<?= icon('arrow') ?></span>
         </a>
       <?php endforeach; ?>
     </div>

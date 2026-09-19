@@ -295,6 +295,7 @@ p {
 
 .sec--deep .faq details {
   background: var(--deep-2);
+  border-color: var(--line-deep);
   box-shadow: none;
 }
 
@@ -875,6 +876,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
+  border: 1px solid var(--line);
   padding: clamp(1.5rem, 2.6vw, 2.15rem);
   background: var(--s0);
   border-radius: var(--r-lg);
@@ -969,6 +971,7 @@ p {
   margin: 0;
   padding: 0;
   background: var(--s0);
+  border: 1px solid var(--line);
   border-radius: var(--r-lg);
   box-shadow: var(--sh-1);
   overflow: hidden;
@@ -1311,6 +1314,7 @@ p {
 
 .faq details {
   background: var(--s0);
+  border: 1px solid var(--line);
   border-radius: var(--r);
   box-shadow: var(--sh-1);
   overflow: hidden;
@@ -1489,6 +1493,7 @@ p {
 
 .post {
   background: var(--s0);
+  border: 1px solid var(--line);
   border-radius: var(--r);
   box-shadow: var(--sh-1);
   padding: clamp(1.35rem, 2vw, 1.7rem);
@@ -1501,12 +1506,57 @@ p {
 }
 
 .post:hover {
+  border-color: var(--blue);
   box-shadow: var(--sh-2);
   transform: translateY(-3px);
 }
 
+.post:hover .post__topic {
+  background: var(--blue);
+  color: #fff;
+}
+
+.post:hover .more .ico {
+  transform: translateX(4px);
+}
+
+.post__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+  font-size: 0.83rem;
+  color: var(--ink-3);
+}
+
+.post__topic {
+  padding: 0.2rem 0.6rem;
+  background: var(--blue-05);
+  color: var(--blue);
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+}
+
+.post__time::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  vertical-align: middle;
+  margin-right: 0.55rem;
+}
+
+.post .more {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
 .post time {
-  font-size: 0.84rem;
+  font-size: 0.83rem;
   color: var(--ink-3);
 }
 

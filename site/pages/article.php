@@ -64,9 +64,14 @@ echo crumbs([['Главная', '/'], ['Статьи', '/stati/'], [$art['title'
       unset($rest[$slug]);
       foreach (array_slice($rest, 0, 3, true) as $s2 => $a2): ?>
         <a class="post" href="<?= e(article_url($s2)) ?>">
-          <time datetime="<?= e($a2['date']) ?>"><?= e(ru_date($a2['date'])) ?></time>
+          <span class="post__meta">
+            <span class="post__topic"><?= e($a2['topic']) ?></span>
+            <time datetime="<?= e($a2['date']) ?>"><?= e(ru_date($a2['date'])) ?></time>
+            <span class="post__time"><?= read_time($s2) ?> мин</span>
+          </span>
           <h3><?= e($a2['title']) ?></h3>
           <p><?= e($a2['excerpt']) ?></p>
+          <span class="more">Читать<?= icon('arrow') ?></span>
         </a>
       <?php endforeach; ?>
     </div>

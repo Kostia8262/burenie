@@ -74,6 +74,28 @@ function ru_date(string $iso): string
     return (int) date('j', $t) . ' ' . $m[(int) date('n', $t)] . ' ' . date('Y', $t);
 }
 
+/**
+ * Время чтения статьи — считается по её же тексту, а не выдумывается.
+ * 180 слов в минуту, теги выброшены, меньше минуты не показываем.
+ */
+function read_time(string $slug): int
+{
+    static $cache = [];
+    if (isset($cache[$slug])) {
+        return $cache[$slug];
+    }
+    $file = __DIR__ . '/../content/articles/' . $slug . '.php';
+    if (!is_file($file)) {
+        return $cache[$slug] = 1;
+    }
+    // PHP-вставки внутри атрибутов ломают strip_tags: он глотает текст до
+    // следующего '>'. Поэтому сначала выкидываем сами вставки.
+    $raw  = preg_replace('/<\?.*?\?>/s', ' ', (string) file_get_contents($file));
+    $text = strip_tags((string) $raw);
+    $words = preg_match_all('/[\p{L}\p{N}]+/u', $text);
+    return $cache[$slug] = max(1, (int) round($words / 180));
+}
+
 /** Склонение: 1 скважина / 2 скважины / 5 скважин. */
 function plural(int $n, string $one, string $few, string $many): string
 {
