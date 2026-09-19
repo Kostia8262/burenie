@@ -8,7 +8,10 @@ declare(strict_types=1);
 const ASSET_V = '2026091901';
 
 // Префикс, если сайт лежит в подпапке (превью-стенд). В бою — пустая строка.
-define('BASE', rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? '/index.php'), chr(47) . chr(92)));
+// SOS_BASE задаётся только при статическом рендере (tools/render-static.php).
+define('BASE', getenv('SOS_BASE') !== false
+    ? rtrim((string) getenv('SOS_BASE'), '/')
+    : rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? '/index.php'), chr(47) . chr(92)));
 
 require __DIR__ . '/inc/config.php';
 require __DIR__ . '/inc/helpers.php';

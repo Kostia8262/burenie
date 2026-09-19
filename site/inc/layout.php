@@ -36,7 +36,7 @@ function page_start(array $m): void
 <link rel="icon" href="<?= e(u('/assets/img/favicon.svg')) ?>" type="image/svg+xml">
 <link rel="apple-touch-icon" href="<?= e(u('/assets/img/touch-icon.png')) ?>">
 <link rel="preload" href="<?= e(u('/assets/fonts/onest-400-cyrillic.woff2')) ?>" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="<?= e(u('/assets/fonts/unbounded-700-cyrillic.woff2')) ?>" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?= e(u('/assets/fonts/onest-700-cyrillic.woff2')) ?>" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="<?= e(u('/assets/css/main.css')) ?>?v=<?= ASSET_V ?>">
 <?php
     echo schema([
