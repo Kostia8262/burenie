@@ -1,0 +1,65 @@
+AddDefaultCharset UTF-8
+DirectoryIndex index.php
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --- 301 со старых адресов заглушки --------------------------------------
+  RewriteRule ^klyuch\.php$          /uslugi/pod-klyuch/       [R=301,L]
+  RewriteRule ^pesok\.php$           /uslugi/na-pesok/         [R=301,L]
+  RewriteRule ^malogabaritnoe\.php$  /uslugi/malogabaritnoe/   [R=301,L]
+  RewriteRule ^adapter\.php$         /uslugi/adapter/          [R=301,L]
+  RewriteRule ^kesson\.php$          /uslugi/kesson/           [R=301,L]
+  RewriteRule ^leto\.php$            /uslugi/letnee/           [R=301,L]
+  RewriteRule ^dacha\.php$           /uslugi/dacha/            [R=301,L]
+  RewriteRule ^license\.php$         /uslugi/licenziya/        [R=301,L]
+
+  # --- www -> без www ------------------------------------------------------
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+  # --- http -> https (включить после выпуска Let's Encrypt) ----------------
+  # RewriteCond %{HTTPS} !=on
+  # RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # --- всё остальное во фронт-контроллер -----------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+ErrorDocument 404 /index.php
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType application/javascript  "access plus 1 year"
+  ExpiresByType font/woff2              "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 6 months"
+  ExpiresByType image/jpeg              "access plus 6 months"
+  ExpiresByType image/webp              "access plus 6 months"
+  ExpiresByType image/png               "access plus 6 months"
+  ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+  <FilesMatch "\.(woff2|css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# исходники и логи наружу не отдаём
+<FilesMatch "\.(inc|log|map)$">
+  Require all denied
+</FilesMatch>
