@@ -1107,9 +1107,9 @@ a.card:hover .card__more {
 .form-card {
   background: #fff;
   border: 1px solid var(--line);
-  border-top: 3px solid var(--or);
   border-radius: var(--r);
-  box-shadow: var(--sh-lg);
+  /* оранжевая полоса сверху — внутренней тенью, чтобы она повторяла скругление */
+  box-shadow: inset 0 3px 0 var(--or), var(--sh-lg);
   padding: clamp(1.4rem, 2.5vw, 1.9rem);
 }
 
