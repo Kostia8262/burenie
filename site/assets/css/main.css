@@ -1272,9 +1272,41 @@ p {
 
 /* ===================== FAQ ===================== */
 
+/* шапка блока вопросов: заголовок и телефон в одну строку, а не в колонку,
+   иначе под коротким текстом слева остаётся дыра во всю высоту списка */
+.faq-head {
+  display: grid;
+  gap: 1.25rem;
+  align-items: end;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+@media (min-width: 820px) {
+  .faq-head {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+.faq-head h2 {
+  max-width: 18ch;
+}
+
+.faq-head p {
+  margin: 0.9rem 0 0;
+  max-width: 52ch;
+}
+
 .faq {
   display: grid;
   gap: 0.6rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .faq--cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem 1rem;
+  }
 }
 
 .faq details {

@@ -135,21 +135,26 @@ page_start([
 
 <!-- ===================== вопросы ===================== -->
 <section class="sec sec--s1">
-  <div class="wrap split">
-    <div>
-      <h2 class="d2">О чём спрашивают чаще всего</h2>
-      <p class="lead">
-        Если вашего вопроса тут нет — позвоните, ответим без «оставьте
-        заявку, мы перезвоним».
-      </p>
+  <div class="wrap">
+    <div class="faq-head">
+      <div>
+        <h2 class="d2">О чём спрашивают чаще всего</h2>
+        <p class="lead">
+          Если вашего вопроса тут нет — позвоните, ответим без «оставьте
+          заявку, мы перезвоним».
+        </p>
+      </div>
       <a class="btn btn--ghost" href="<?= e(tel_href(main_phone())) ?>">
         <?= icon('phone') ?><?= e(main_phone()) ?>
       </a>
     </div>
 
-    <div class="faq">
-      <?php foreach (FAQ as $i => $f): ?>
-        <details<?= $i === 0 ? ' open' : '' ?>>
+    <div class="faq faq--cols">
+      <?php /* все закрыты: в две колонки сразу видны все вопросы, и строки
+               сетки не расходятся по высоте. Ответы всё равно уходят в
+               микроразметку FAQPage, поисковику они видны. */ ?>
+      <?php foreach (FAQ as $f): ?>
+        <details>
           <summary><?= e($f['q']) ?></summary>
           <div class="faq__a"><p><?= e($f['a']) ?></p></div>
         </details>
