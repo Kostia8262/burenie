@@ -20,6 +20,10 @@ function service_directory(): string
         $o .= '<a class="feat" href="' . e(service_url($lead)) . '">'
             . '<h3>' . e($feat['title']) . '</h3>'
             . '<p>' . e($feat['short']) . '</p>'
+            . (empty($feat['bullets']) ? '' :
+                '<ul class="feat__list">'
+                . implode('', array_map(fn($b) => '<li>' . e($b) . '</li>', $feat['bullets']))
+                . '</ul>')
             . '<span class="more">Подробнее об услуге' . icon('arrow') . '</span>'
             . '</a>';
 
