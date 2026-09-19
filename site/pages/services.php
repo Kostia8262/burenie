@@ -17,8 +17,8 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/']]);
   </div>
 </div>
 
-<?php foreach (SERVICE_GROUPS as $gk => $gname): ?>
-<section class="sec sec--tight">
+<?php $band = 0; foreach (SERVICE_GROUPS as $gk => $gname): $band++; ?>
+<section class="sec sec--tight<?= $band % 2 === 0 ? ' sec--s1' : '' ?>">
   <div class="wrap">
     <h2 class="h-minor"><?= e($gname) ?></h2>
     <div class="grid grid--3">

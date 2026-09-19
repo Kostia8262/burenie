@@ -9,8 +9,8 @@
 :root {
   /* поверхности: три ступени, а не одна белая плоскость */
   --s0: #ffffff;
-  --s1: #f1f6f9;
-  --s2: #e4edf2;
+  --s1: #e6eff5;   /* заметно тонированная полоса: на #f1f6f9 разница не читалась */
+  --s2: #d9e6ee;
   --deep: #0d2b3a;
   --deep-2: #123a4d;
 
@@ -251,6 +251,15 @@ p {
   background: var(--s1);
 }
 
+/* на тонированной полосе белые карточки отделяются сами, тень можно смягчить */
+.sec--s1 .card,
+.sec--s1 .post,
+.sec--s1 .faq details,
+.sec--s1 .steps li,
+.sec--s1 .cities a {
+  box-shadow: 0 1px 2px rgba(13, 43, 58, 0.06);
+}
+
 .sec--deep {
   background: var(--deep);
   color: var(--on-deep);
@@ -268,6 +277,47 @@ p {
 
 .sec--deep .note {
   color: var(--on-deep-3);
+}
+
+/* компоненты на тёмной полосе: не белые плашки, а прозрачные с обводкой */
+.sec--deep .cities a {
+  background: transparent;
+  border: 1px solid var(--line-deep);
+  color: var(--on-deep);
+  box-shadow: none;
+}
+
+.sec--deep .cities a:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--sky);
+  color: #fff;
+}
+
+.sec--deep .faq details {
+  background: var(--deep-2);
+  box-shadow: none;
+}
+
+.sec--deep .faq summary {
+  color: #fff;
+}
+
+.sec--deep .faq summary:hover {
+  color: var(--or-hi);
+}
+
+.sec--deep .faq__a {
+  color: var(--on-deep-2);
+}
+
+.sec--deep .btn--ghost {
+  --btn-fg: #fff;
+  --btn-bd: var(--line-deep);
+}
+
+.sec--deep .btn--ghost:hover {
+  --btn-bg: rgba(255, 255, 255, 0.08);
+  --btn-bd: var(--sky);
 }
 
 .sec-head {
@@ -1536,8 +1586,13 @@ p {
 }
 
 .phead {
-  background: linear-gradient(180deg, var(--s1), var(--s0));
+  background: var(--s1);
   padding-block: clamp(1.6rem, 3.5vw, 2.75rem) clamp(2rem, 4vw, 3rem);
+}
+
+/* секция сразу за шапкой страницы не должна добавлять второй большой отступ */
+.phead + .sec {
+  padding-top: clamp(2rem, 4vw, 3.25rem);
 }
 
 .phead h1 {

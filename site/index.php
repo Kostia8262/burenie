@@ -22,6 +22,11 @@ require __DIR__ . '/inc/parts/analytics.php';
 require __DIR__ . '/inc/parts/directory.php';
 require __DIR__ . '/inc/layout.php';
 
+// Пришли сюда через ErrorDocument 403 — показываем свою страницу отказа
+if ((int) ($_SERVER['REDIRECT_STATUS'] ?? 0) === 403) {
+    forbidden();
+}
+
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $path = rawurldecode($path);
 if (BASE !== '' && str_starts_with($path, BASE)) {
@@ -48,7 +53,14 @@ function view(string $file, array $vars = []): never
 function not_found(): never
 {
     http_response_code(404);
-    view('404');
+    view('404', ['code' => 404]);
+}
+
+/** Apache отдаёт сюда и 403 — показываем свою страницу, а не хостинговую. */
+function forbidden(): never
+{
+    http_response_code(403);
+    view('404', ['code' => 403]);
 }
 
 // ---- карта сайта -----------------------------------------------------------

@@ -56,7 +56,7 @@ page_start([
 </section>
 
 <!-- ===================== цена и заявка ===================== -->
-<section class="sec" id="ceny">
+<section class="sec sec--s1" id="ceny">
   <div class="wrap split">
     <div>
       <h2 class="d2">Почему мы не вешаем цену за метр на главную</h2>
@@ -93,7 +93,7 @@ page_start([
 </section>
 
 <!-- ===================== как работаем ===================== -->
-<section class="sec sec--s1">
+<section class="sec">
   <div class="wrap">
     <div class="sec-head">
       <h2 class="d2">Пять шагов, и в доме вода</h2>
@@ -110,7 +110,7 @@ page_start([
 </section>
 
 <!-- ===================== география ===================== -->
-<section class="sec">
+<section class="sec sec--deep">
   <div class="wrap split">
     <div>
       <h2 class="d2">Куда выезжаем</h2>

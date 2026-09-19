@@ -55,7 +55,7 @@ echo crumbs([['Главная', '/'], ['Статьи', '/stati/'], [$art['title'
   </div>
 </section>
 
-<section class="sec sec--tight">
+<section class="sec sec--s1 sec--tight">
   <div class="wrap">
     <h2 class="h-minor">Ещё статьи</h2>
     <div class="posts">

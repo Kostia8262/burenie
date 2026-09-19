@@ -5,6 +5,12 @@ Options -Indexes
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # --- служебные каталоги наружу не отдаём ---------------------------------
+  # Работать должен только index.php. Правило важно ещё и потому, что если
+  # обработчик PHP на хостинге когда-нибудь отвалится, эти файлы отдадутся
+  # исходниками — вместе с токеном бота и ключами счётчиков.
+  RewriteRule ^(inc|pages|content|tools)/ - [R=404,L]
+
   # --- 301 со старых адресов заглушки --------------------------------------
   RewriteRule ^klyuch\.php$          /uslugi/pod-klyuch/       [R=301,L]
   RewriteRule ^pesok\.php$           /uslugi/na-pesok/         [R=301,L]
@@ -34,7 +40,13 @@ Options -Indexes
   RewriteRule ^ index.php [QSA,L]
 </IfModule>
 
+# Свои страницы ошибок. 404 и 403 рисует роутер, 500 — статика: если упал
+# PHP, отдать PHP-страницу уже не получится.
+ErrorDocument 403 /index.php
 ErrorDocument 404 /index.php
+ErrorDocument 500 /500.html
+ErrorDocument 502 /500.html
+ErrorDocument 503 /500.html
 
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml

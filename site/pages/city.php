@@ -82,7 +82,7 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
   </div>
 </section>
 
-<section class="sec sec--tight">
+<section class="sec sec--s1 sec--tight">
   <div class="wrap">
     <h2 class="h-minor">Другие города</h2>
     <ul class="cities">

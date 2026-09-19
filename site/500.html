@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сайт временно недоступен — СОС Бурение</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<!--
+  Эта страница показывается, когда упал PHP. Поэтому здесь нет ни одного
+  обращения к серверным скриптам, а стили лежат прямо в файле: внешний CSS
+  в такой момент тоже может не отдаться.
+-->
+<style>
+  :root { --blue:#12527e; --ink:#12222c; --ink-2:#4d616e; --or:#ef7b1c; --s1:#e6eff5; }
+  * { box-sizing:border-box; margin:0 }
+  body {
+    min-height:100dvh; display:grid; place-items:center;
+    padding:2rem 1.25rem; background:var(--s1); color:var(--ink);
+    font:400 17px/1.62 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  .box { max-width:33rem; text-align:center }
+  svg { width:64px; height:64px; margin:0 auto 1.5rem; display:block }
+  h1 { font-size:clamp(1.7rem,5vw,2.4rem); line-height:1.1; letter-spacing:-.03em; color:var(--blue) }
+  p { margin:1rem 0 0; color:var(--ink-2) }
+  .tel {
+    display:inline-flex; align-items:center; gap:.6rem; margin-top:1.75rem;
+    padding:1rem 1.9rem; background:var(--or); color:var(--ink);
+    border-radius:9px; text-decoration:none; font-weight:700; font-size:1.06rem;
+  }
+  .tel:hover { background:#ff8c30 }
+  .sub { margin-top:1.5rem; font-size:.92rem; color:#7b8f9c }
+  .sub a { color:inherit }
+</style>
+</head>
+<body>
+  <div class="box">
+    <svg viewBox="0 0 40 40" aria-hidden="true">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2e9bc4"/><stop offset="1" stop-color="#12527e"/>
+      </linearGradient></defs>
+      <path fill="url(#g)" d="M20 2.5c6.4 7.7 11.5 14.2 11.5 20.3C31.5 30.3 26.3 36 20 36S8.5 30.3 8.5 22.8C8.5 16.7 13.6 10.2 20 2.5z"/>
+      <rect x="18.4" y="11" width="3.2" height="14.5" rx=".4" fill="#fff"/>
+      <path d="M15.9 25.5h8.2L20 32z" fill="#ef7b1c"/>
+    </svg>
+
+    <h1>Сайт временно недоступен</h1>
+    <p>
+      Что-то сломалось на нашей стороне. Мы уже чиним — обычно это занимает
+      несколько минут. Заявки в это время не доходят, поэтому звоните напрямую.
+    </p>
+
+    <a class="tel" href="tel:+79494056846">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+           stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;margin:0">
+        <path d="M6.3 3.8h3l1.4 3.6-1.9 1.4a11 11 0 0 0 5.4 5.4l1.4-1.9 3.6 1.4v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.3 6 2 2 0 0 1 6.3 3.8z"/>
+      </svg>
+      +7 (949) 405-68-46
+    </a>
+
+    <p class="sub">
+      Или напишите: <a href="https://t.me/burenie_donetsk">@burenie_donetsk</a>,
+      <a href="mailto:sosc1995@mail.ru">sosc1995@mail.ru</a>
+    </p>
+  </div>
+</body>
+</html>

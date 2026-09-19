@@ -66,7 +66,7 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title
   </div>
 </section>
 
-<section class="sec sec--tight">
+<section class="sec sec--s1 sec--tight">
   <div class="wrap">
     <h2 class="h-minor">Смотрят вместе с этим</h2>
     <div class="grid grid--3">

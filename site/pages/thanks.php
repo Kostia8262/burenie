@@ -13,7 +13,7 @@ page_start([
     <p class="btn-row"><a class="btn btn--lg" href="<?= e(tel_href(main_phone())) ?>"><?= e(main_phone()) ?></a></p>
   </div>
 </div>
-<section class="sec">
+<section class="sec sec--s1">
   <div class="wrap">
     <h2 class="h-minor">Пока ждёте</h2>
     <div class="posts">
