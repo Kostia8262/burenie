@@ -9,7 +9,6 @@ echo crumbs([['Главная', '/'], ['Статьи', '/stati/']]);
 
 <div class="phead">
   <div class="wrap">
-    <p class="eyebrow">Разбираемся</p>
     <h1 class="d1">Статьи</h1>
     <p class="lead">
       То, что мы обычно рассказываем заказчику на участке. Без «закажите у нас»

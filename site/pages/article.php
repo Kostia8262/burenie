@@ -25,7 +25,6 @@ echo crumbs([['Главная', '/'], ['Статьи', '/stati/'], [$art['title'
 
 <div class="phead">
   <div class="wrap">
-    <p class="eyebrow"><time datetime="<?= e($art['date']) ?>"><?= e(ru_date($art['date'])) ?></time></p>
     <h1 class="d1"><?= e($art['title']) ?></h1>
     <p class="lead"><?= e($art['excerpt']) ?></p>
   </div>
@@ -42,9 +41,9 @@ echo crumbs([['Главная', '/'], ['Статьи', '/stati/'], [$art['title'
     </article>
 
     <aside>
-      <div class="form-card" id="zayavka" style="position:sticky;top:96px">
-        <p class="eyebrow" style="color:var(--on-deep-2)">Расчёт бесплатно</p>
-        <h2 class="d3" style="margin-bottom:1.2rem">Спросить про свой участок</h2>
+      <div class="form-card sticky" id="zayavka">
+        <h2 class="d3">Спросить про свой участок</h2>
+        <p class="form-card__note">Инженер приедет, посмотрит участок и назовёт сумму. Бесплатно и ни к чему вас не обязывает.</p>
         <?php
         $lead_source = 'Статья: ' . $art['title'];
         $lead_id = 'lead-art';
@@ -58,7 +57,7 @@ echo crumbs([['Главная', '/'], ['Статьи', '/stati/'], [$art['title'
 
 <section class="sec sec--tight">
   <div class="wrap">
-    <h2 class="eyebrow" style="margin-bottom:1.5rem">Ещё статьи</h2>
+    <h2 class="h-minor">Ещё статьи</h2>
     <div class="posts">
       <?php
       $rest = ARTICLES;

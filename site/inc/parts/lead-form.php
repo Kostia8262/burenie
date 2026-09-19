@@ -35,7 +35,7 @@ $lead_id     = $lead_id ?? 'zayavka';
   </div>
   <?php endif; ?>
 
-  <button class="btn btn--full btn--lg" type="submit">Жду расчёт</button>
+  <button class="btn btn--full btn--lg" type="submit">Жду расчёт<?= icon('arrow') ?></button>
   <p class="form-msg" data-msg hidden></p>
   <p class="form__agree">
     Нажимая кнопку, вы соглашаетесь на обработку персональных данных

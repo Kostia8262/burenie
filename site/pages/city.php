@@ -22,7 +22,6 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
 
 <div class="phead">
   <div class="wrap">
-    <p class="eyebrow"><?= e($name) ?> · ДНР</p>
     <h1 class="d1">Бурение скважин на воду в <?= e($case) ?></h1>
     <p class="lead">
       Бурим и обустраиваем скважины в <?= e($case) ?><?= empty($city['home']) ? ' — выезжаем из Донецка' : '' ?>.
@@ -69,9 +68,9 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
     </article>
 
     <aside>
-      <div class="form-card" id="zayavka" style="position:sticky;top:96px">
-        <p class="eyebrow" style="color:var(--on-deep-2)">Расчёт бесплатно</p>
-        <h2 class="d3" style="margin-bottom:1.2rem">Скважина в <?= e($case) ?></h2>
+      <div class="form-card sticky" id="zayavka">
+        <h2 class="d3">Скважина в <?= e($case) ?></h2>
+        <p class="form-card__note">Инженер приедет, посмотрит участок и назовёт сумму. Бесплатно и ни к чему вас не обязывает.</p>
         <?php
         $lead_source = 'Город: ' . $name;
         $lead_id = 'lead-city';
@@ -85,7 +84,7 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
 
 <section class="sec sec--tight">
   <div class="wrap">
-    <h2 class="eyebrow" style="margin-bottom:1.5rem">Другие города</h2>
+    <h2 class="h-minor">Другие города</h2>
     <ul class="cities">
       <?php foreach (CITIES as $s2 => $c2): if ($s2 === $slug) continue; ?>
         <li><a href="<?= e(city_url($s2)) ?>"><?= e($c2['name']) ?></a></li>

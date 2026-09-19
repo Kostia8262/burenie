@@ -9,7 +9,6 @@ echo crumbs([['Главная', '/'], ['О компании', '/o-kompanii/']]);
 
 <div class="phead">
   <div class="wrap">
-    <p class="eyebrow">О нас</p>
     <h1 class="d1">Бригада из Донецка, которая бурит сама</h1>
     <p class="lead">
       <?= e(SITE['legal']) ?>. Своя малогабаритная установка, свои люди на
@@ -71,9 +70,9 @@ echo crumbs([['Главная', '/'], ['О компании', '/o-kompanii/']]);
     </div>
 
     <aside>
-      <div class="form-card" id="zayavka" style="position:sticky;top:96px">
-        <p class="eyebrow" style="color:var(--on-deep-2)">Расчёт бесплатно</p>
-        <h2 class="d3" style="margin-bottom:1.2rem">Вызвать инженера</h2>
+      <div class="form-card sticky" id="zayavka">
+        <h2 class="d3">Вызвать инженера</h2>
+        <p class="form-card__note">Инженер приедет, посмотрит участок и назовёт сумму. Бесплатно и ни к чему вас не обязывает.</p>
         <?php
         $lead_source = 'О компании';
         $lead_id = 'lead-about';

@@ -9,7 +9,6 @@ echo crumbs([['Главная', '/'], ['Контакты', '/kontakty/']]);
 
 <div class="phead">
   <div class="wrap">
-    <p class="eyebrow">Связаться</p>
     <h1 class="d1">Контакты</h1>
     <p class="lead">Звоните с 8:00 до 20:00 без выходных. На заявки с сайта отвечаем в ближайшее рабочее время.</p>
   </div>
@@ -20,7 +19,7 @@ echo crumbs([['Главная', '/'], ['Контакты', '/kontakty/']]);
     <div class="prose">
       <h2>Телефоны</h2>
       <?php foreach (SITE['phones'] as $p): ?>
-        <p><a class="ftr__tel" style="color:var(--ink)" href="<?= e(tel_href($p)) ?>"><?= e($p) ?></a></p>
+        <p><a class="tel-big" href="<?= e(tel_href($p)) ?>"><?= e($p) ?></a></p>
       <?php endforeach; ?>
 
       <h2>Ещё способы</h2>
@@ -42,8 +41,8 @@ echo crumbs([['Главная', '/'], ['Контакты', '/kontakty/']]);
 
     <aside>
       <div class="form-card" id="zayavka">
-        <p class="eyebrow" style="color:var(--on-deep-2)">Расчёт бесплатно</p>
-        <h2 class="d3" style="margin-bottom:1.2rem">Оставить заявку</h2>
+        <h2 class="d3">Оставить заявку</h2>
+        <p class="form-card__note">Инженер приедет, посмотрит участок и назовёт сумму. Бесплатно и ни к чему вас не обязывает.</p>
         <?php
         $lead_source = 'Страница контактов';
         $lead_id = 'lead-contacts';
@@ -57,7 +56,7 @@ echo crumbs([['Главная', '/'], ['Контакты', '/kontakty/']]);
 
 <section class="sec sec--tight">
   <div class="wrap">
-    <div style="border:1px solid var(--hair);border-radius:var(--r);overflow:hidden;line-height:0">
+    <div class="mapbox">
       <iframe title="Мы на карте" loading="lazy" style="width:100%;height:420px;border:0"
         src="https://yandex.ru/map-widget/v1/?ll=<?= e(SITE['lon']) ?>%2C<?= e(SITE['lat']) ?>&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNDQ5NDk3ODAwEkbQoNC-0YHRgdC40Y8sINCU0L7QvdC10YbQuiwg0YPQu9C40YbQsCDQpNGR0LTQvtGA0LAg0JfQsNC50YbQtdCy0LAsIDc1IgoNpz0XQhU__j9C&z=16.5"></iframe>
     </div>

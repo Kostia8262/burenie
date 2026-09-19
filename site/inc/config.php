@@ -61,6 +61,20 @@ const SERVICE_GROUPS = [
     'soputstvuyushchee' => 'Вода, стоки, документы',
 ];
 
+/** Главная услуга в каждой группе — показывается крупно. */
+const FEATURED = [
+    'burenie'           => 'pod-klyuch',
+    'obustroystvo'      => 'adapter',
+    'soputstvuyushchee' => 'vodoochistka',
+];
+
+/** Одна фраза про каждую группу — для заголовка блока. */
+const GROUP_LEAD = [
+    'burenie'           => 'Доходим до рабочего горизонта и обсаживаем ствол так, чтобы скважина пережила не один насос.',
+    'obustroystvo'      => 'Превращаем трубу из земли в водопровод: насос, автоматика, ввод в дом, защита от мороза.',
+    'soputstvuyushchee' => 'Всё, что идёт следом за водой: чем её чистить, куда девать стоки и какие нужны документы.',
+];
+
 const SERVICES = [
     'pod-klyuch' => [
         'group' => 'burenie',
@@ -232,6 +246,7 @@ const CITIES = [
     'doneck'      => ['name' => 'Донецк',      'case' => 'Донецке',      'home' => true],
     'makeevka'    => ['name' => 'Макеевка',    'case' => 'Макеевке'],
     'gorlovka'    => ['name' => 'Горловка',    'case' => 'Горловке'],
+    'enakievo'    => ['name' => 'Енакиево',   'case' => 'Енакиево'],
     'harcyzsk'    => ['name' => 'Харцызск',    'case' => 'Харцызске'],
     'yasinovataya' => ['name' => 'Ясиноватая', 'case' => 'Ясиноватой'],
     'shahtyorsk'  => ['name' => 'Шахтёрск',    'case' => 'Шахтёрске'],

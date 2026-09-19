@@ -49,7 +49,7 @@ function core_svg(int $h = 460, int $colW = 120, bool $ticks = true): string
         $marks = [0, 22, 45, 70, $max];
         foreach ($marks as $m) {
             $ty = $y($m);
-            $o .= sprintf('<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="var(--hair-deep)"/>',
+            $o .= sprintf('<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="var(--line-deep)"/>',
                 $colW, $ty, $colW + 16, $ty);
             $o .= sprintf('<text class="core__depth" x="%d" y="%.1f">%d м</text>',
                 $colW + 22, $ty + 4, $m);

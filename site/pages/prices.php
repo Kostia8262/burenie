@@ -9,7 +9,6 @@ echo crumbs([['Главная', '/'], ['Цены', '/ceny/']]);
 
 <div class="phead">
   <div class="wrap">
-    <p class="eyebrow">Деньги</p>
     <h1 class="d1">Сколько стоит скважина</h1>
     <p class="lead">
       Честный ответ: до выезда — неизвестно. Ниже разобрано, из чего складывается
@@ -87,9 +86,9 @@ echo crumbs([['Главная', '/'], ['Цены', '/ceny/']]);
     </div>
 
     <aside>
-      <div class="form-card" id="zayavka" style="position:sticky;top:96px">
-        <p class="eyebrow" style="color:var(--on-deep-2)">Бесплатно</p>
-        <h2 class="d3" style="margin-bottom:1.2rem">Вызвать инженера на расчёт</h2>
+      <div class="form-card sticky" id="zayavka">
+        <h2 class="d3">Вызвать инженера на расчёт</h2>
+        <p class="form-card__note">Инженер приедет, посмотрит участок и назовёт сумму. Бесплатно и ни к чему вас не обязывает.</p>
         <?php
         $lead_source = 'Страница цен';
         $lead_id = 'lead-price';

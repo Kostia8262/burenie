@@ -9,7 +9,6 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/']]);
 
 <div class="phead">
   <div class="wrap">
-    <p class="eyebrow">География</p>
     <h1 class="d1">Где мы работаем</h1>
     <p class="lead">
       База в Донецке. По республике выезжаем так же, как по городу: установка

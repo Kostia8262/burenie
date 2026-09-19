@@ -27,7 +27,6 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title
 
 <div class="phead">
   <div class="wrap">
-    <p class="eyebrow"><?= e(SERVICE_GROUPS[$svc['group']]) ?></p>
     <h1 class="d1"><?= e($svc['h1']) ?></h1>
     <p class="lead"><?= e($svc['short']) ?></p>
     <div class="phead__meta">
@@ -53,9 +52,9 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title
     </article>
 
     <aside>
-      <div class="form-card" id="zayavka" style="position:sticky;top:96px">
-        <p class="eyebrow" style="color:var(--on-deep-2)">Расчёт бесплатно</p>
-        <h2 class="d3" style="margin-bottom:1.2rem">Посчитаем по вашему участку</h2>
+      <div class="form-card sticky" id="zayavka">
+        <h2 class="d3">Посчитаем по вашему участку</h2>
+        <p class="form-card__note">Инженер приедет, посмотрит участок и назовёт сумму. Бесплатно и ни к чему вас не обязывает.</p>
         <?php
         $lead_source = $svc['title'];
         $lead_id = 'lead-svc';
@@ -69,7 +68,7 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title
 
 <section class="sec sec--tight">
   <div class="wrap">
-    <h2 class="eyebrow" style="margin-bottom:1.5rem">Смотрят вместе с этим</h2>
+    <h2 class="h-minor">Смотрят вместе с этим</h2>
     <div class="grid grid--3">
       <?php
       $same = services_in($svc['group']);

@@ -20,7 +20,7 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/']]);
 <?php foreach (SERVICE_GROUPS as $gk => $gname): ?>
 <section class="sec sec--tight">
   <div class="wrap">
-    <h2 class="eyebrow" style="margin-bottom:1.5rem"><?= e($gname) ?></h2>
+    <h2 class="h-minor"><?= e($gname) ?></h2>
     <div class="grid grid--3">
       <?php foreach (services_in($gk) as $slug => $s): ?>
         <a class="card" href="<?= e(service_url($slug)) ?>">

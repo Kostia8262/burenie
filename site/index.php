@@ -5,7 +5,8 @@
 
 declare(strict_types=1);
 
-const ASSET_V = '2026091901';
+// Версия ассетов = время правки CSS: кеш сбрасывается сам, руками не трогаем.
+define('ASSET_V', (string) @filemtime(__DIR__ . '/assets/css/main.css'));
 
 // Префикс, если сайт лежит в подпапке (превью-стенд). В бою — пустая строка.
 // SOS_BASE задаётся только при статическом рендере (tools/render-static.php).
@@ -16,6 +17,8 @@ define('BASE', getenv('SOS_BASE') !== false
 require __DIR__ . '/inc/config.php';
 require __DIR__ . '/inc/helpers.php';
 require __DIR__ . '/inc/core.php';
+require __DIR__ . '/inc/parts/icons.php';
+require __DIR__ . '/inc/parts/directory.php';
 require __DIR__ . '/inc/layout.php';
 
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';

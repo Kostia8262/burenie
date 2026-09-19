@@ -31,14 +31,12 @@
     });
   }
 
-  /* ---------- появление секций ---------- */
-  var rises = document.querySelectorAll(".rise");
+  /* ---------- единственный поставленный момент: проходка разреза ---------- */
+  var core = document.querySelector(".corex__col");
 
-  if (rises.length) {
+  if (core) {
     if (calm || !("IntersectionObserver" in window)) {
-      rises.forEach(function (el) {
-        el.classList.add("is-in");
-      });
+      core.classList.add("is-in");
     } else {
       var io = new IntersectionObserver(
         function (entries) {
@@ -49,11 +47,9 @@
             }
           });
         },
-        { rootMargin: "0px 0px -12% 0px" }
+        { rootMargin: "0px 0px -18% 0px" }
       );
-      rises.forEach(function (el) {
-        io.observe(el);
-      });
+      io.observe(core);
     }
   }
 

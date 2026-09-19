@@ -8,15 +8,14 @@ page_start([
 ?>
 <div class="phead">
   <div class="wrap">
-    <p class="eyebrow">Готово</p>
     <h1 class="d1">Заявка у нас</h1>
     <p class="lead">Перезвоним в ближайшее рабочее время. Если нужно срочно — звоните сами, так быстрее.</p>
-    <p style="margin-top:2rem"><a class="btn btn--lg" href="<?= e(tel_href(main_phone())) ?>"><?= e(main_phone()) ?></a></p>
+    <p class="btn-row"><a class="btn btn--lg" href="<?= e(tel_href(main_phone())) ?>"><?= e(main_phone()) ?></a></p>
   </div>
 </div>
 <section class="sec">
   <div class="wrap">
-    <h2 class="eyebrow" style="margin-bottom:1.5rem">Пока ждёте</h2>
+    <h2 class="h-minor">Пока ждёте</h2>
     <div class="posts">
       <?php foreach (array_slice(ARTICLES, 0, 3, true) as $slug => $a): ?>
         <a class="post" href="<?= e(article_url($slug)) ?>">
