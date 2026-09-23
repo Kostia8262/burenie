@@ -1553,19 +1553,73 @@ p {
   }
 }
 
-/* и по вертикали, когда карточки идут в колонку */
-@media (max-width: 619px) {
+/* На телефоне пять карточек в столбик занимали по экрану каждая. Ступень
+   складывается в строку: жетон слева, текст посередине, схема справа —
+   тот же порядок чтения, но впятеро меньше высоты. */
+@media (max-width: 619.98px) {
+  .steps {
+    margin-top: 1rem;
+    gap: 0.7rem;
+  }
+
+  .steps li {
+    display: grid;
+    grid-template-columns: 2.1rem minmax(0, 1fr) 2.7rem;
+    align-items: start;
+    column-gap: 0.6rem;
+    row-gap: 0.2rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .steps li::before {
+    position: static;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: 2.1rem;
+    height: 2.1rem;
+    font-size: 0.98rem;
+    border: 0;
+    box-shadow: 0 2px 6px rgba(18, 82, 126, 0.22);
+  }
+
+  .steps li:last-child::before {
+    box-shadow: 0 2px 6px rgba(28, 115, 145, 0.22);
+  }
+
+  .steps h3 {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+    font-size: 1.02rem;
+  }
+
+  .steps li p {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.9rem;
+  }
+
+  .steps > li .steps__art {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    width: 2.7rem;
+    height: 2.7rem;
+    margin: 0;
+    align-self: center;
+  }
+
+  /* пунктир в зазоре между ступенями */
   .steps li::after {
     content: "";
     position: absolute;
     top: 100%;
-    left: 2.5rem;
+    left: 2.05rem;
     width: 2px;
-    height: 1.5rem;
+    height: 0.7rem;
     background: repeating-linear-gradient(
       180deg,
-      var(--line-2) 0 5px,
-      transparent 5px 10px
+      var(--line-2) 0 4px,
+      transparent 4px 8px
     );
   }
 
