@@ -186,7 +186,7 @@ page_start([
         кессон отличается от адаптера, что смотреть в анализе воды.
       </p>
     </div>
-    <div class="posts">
+    <div class="posts posts--slider" tabindex="0" role="group" aria-label="Статьи о скважинах и воде">
       <?php foreach (array_slice(ARTICLES, 0, 3, true) as $slug => $a): ?>
         <a class="post" href="<?= e(article_url($slug)) ?>">
           <?= illu_of('art/' . $slug, 'post__art') ?>

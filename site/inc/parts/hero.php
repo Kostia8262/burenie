@@ -53,7 +53,7 @@ $shots = array_slice(WORKS, 0, 5);
                    srcset="<?= e(u(shot_src($s['src'], 480))) ?> 480w, <?= e(u($s['src'])) ?> 960w"
                    sizes="(max-width: 500px) calc(100vw - 3.6rem), 428px"
                    width="960" height="1280"
-                   <?= $i === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>>
+                   loading="lazy"<?= $i === 0 ? ' fetchpriority="high"' : '' ?>>
               <figcaption><?= e($s['cap']) ?></figcaption>
             </figure>
           <?php endforeach; ?>
