@@ -1,0 +1,38 @@
+# Конфиг превью-стенда: кладётся в ~/www/sos-bureniednr.ru/_preview/.htaccess
+#
+# Отличия от боевого site/.htaccess — только два: RewriteBase на подпапку
+# и запрет индексации. Всё остальное повторяет бой, чтобы стенд вёл себя
+# так же, как будущий сайт.
+#
+# Закрытие от роботов здесь ОБЯЗАТЕЛЬНО: стенд живёт на боевом домене и
+# содержит копию всех страниц сайта. Без запрета поисковик проиндексирует
+# /_preview/... и будет считать дубликатом то, что позже встанет в корень.
+# robots.txt внутри подпапки роботы не читают — закрывать нужно заголовком.
+
+AddDefaultCharset UTF-8
+DirectoryIndex index.php
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /_preview/
+
+  # служебные каталоги наружу не отдаём
+  RewriteRule ^(inc|pages|content|tools)/ - [R=404,L]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+ErrorDocument 403 /_preview/index.php
+ErrorDocument 404 /_preview/index.php
+ErrorDocument 500 /_preview/500.html
+
+<FilesMatch "\.(inc|log|map)$">
+  Require all denied
+</FilesMatch>
