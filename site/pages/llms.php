@@ -64,7 +64,7 @@ foreach (ARTICLES as $slug => $a) {
 $out[] = '';
 $out[] = '## Частые вопросы';
 $out[] = '';
-foreach (FAQ as $f) {
+foreach (faq() as $f) {
     $out[] = '### ' . $f['q'];
     $out[] = '';
     $out[] = $f['a'];
