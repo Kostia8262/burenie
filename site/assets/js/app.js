@@ -4,6 +4,34 @@
 
   var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- окно заявки ---------- */
+  var modal = document.getElementById("leadModal");
+
+  if (modal && typeof modal.showModal === "function") {
+    document.addEventListener("click", function (e) {
+      var open = e.target.closest && e.target.closest("[data-lead-open]");
+      if (open) {
+        e.preventDefault();
+        if (nav && nav.getAttribute("data-open") === "true") {
+          burger.setAttribute("aria-expanded", "false");
+          nav.setAttribute("data-open", "false");
+        }
+        modal.showModal();
+        var first = modal.querySelector('input[name="name"]');
+        if (first) first.focus();
+        return;
+      }
+      if (e.target.closest && e.target.closest("[data-lead-close]")) {
+        modal.close();
+      }
+    });
+
+    // клик по подложке за пределами карточки закрывает окно
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) modal.close();
+    });
+  }
+
   /* ---------- цели аналитики ---------- */
   function goal(name) {
     try {
@@ -16,7 +44,7 @@
 
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest('a[href^="tel:"]');
-    if (a) goal("phone_click");
+    if (a && !a.hasAttribute("data-lead-open")) goal("phone_click");
     var t = e.target.closest && e.target.closest('a[href^="https://t.me/"]');
     if (t) goal("telegram_click");
   });

@@ -27,8 +27,8 @@
       </ul>
 
       <div class="hero__cta">
-        <a class="btn btn--lg" href="#zayavka">Рассчитать стоимость</a>
-        <a class="btn btn--lg btn--ghost" href="<?= e(tel_href(main_phone())) ?>">
+        <a class="btn btn--lg" href="#zayavka" data-lead-open>Рассчитать стоимость</a>
+        <a class="btn btn--lg btn--ghost" href="<?= e(tel_href(main_phone())) ?>" data-lead-open>
           <?= icon('phone') ?><?= e(main_phone()) ?>
         </a>
       </div>

@@ -8,7 +8,7 @@
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:.8rem">
       <a class="btn btn--lg" href="<?= e(tel_href(main_phone())) ?>"><?= e(main_phone()) ?></a>
-      <a class="btn btn--lg btn--ghost" href="<?= e(u('/kontakty/#zayavka')) ?>" style="color:#fff;border-color:rgba(255,255,255,.5)">Оставить заявку</a>
+      <a class="btn btn--lg btn--ghost" href="<?= e(u('/kontakty/#zayavka')) ?>" data-lead-open style="color:#fff;border-color:rgba(255,255,255,.5)">Оставить заявку</a>
     </div>
   </div>
 </section>
