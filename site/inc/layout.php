@@ -24,7 +24,7 @@ function page_start(array $m): void
 <?php if (!empty($m['noindex'])): ?>
 <meta name="robots" content="noindex, follow">
 <?php endif; ?>
-<meta name="theme-color" content="#10161a">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="<?= e($m['ogtype'] ?? 'website') ?>">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="<?= e(SITE['name']) ?>">
@@ -33,8 +33,10 @@ function page_start(array $m): void
 <meta property="og:url" content="<?= e(abs_url($path)) ?>">
 <meta property="og:image" content="<?= e(abs_url($og)) ?>">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="<?= e(u('/favicon.ico')) ?>" sizes="32x32">
 <link rel="icon" href="<?= e(u('/assets/img/favicon.svg')) ?>" type="image/svg+xml">
 <link rel="apple-touch-icon" href="<?= e(u('/assets/img/touch-icon.png')) ?>">
+<link rel="manifest" href="<?= e(u('/manifest.webmanifest')) ?>">
 <link rel="preload" href="<?= e(u('/assets/fonts/onest-400-cyrillic.woff2')) ?>" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?= e(u('/assets/fonts/onest-700-cyrillic.woff2')) ?>" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="<?= e(u('/assets/css/main.css')) ?>?v=<?= ASSET_V ?>">

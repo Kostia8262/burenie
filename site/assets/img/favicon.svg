@@ -1,10 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 34">
-  <rect width="30" height="34" fill="#10161a"/>
-  <rect y="3"  width="30" height="5" fill="#6b5a42"/>
-  <rect y="8"  width="30" height="6" fill="#c7a86b"/>
-  <rect y="14" width="30" height="6" fill="#a8894c"/>
-  <rect y="20" width="30" height="6" fill="#5e6457"/>
-  <rect y="26" width="30" height="6" fill="#c4c2b4"/>
-  <rect x="12.5" y="0" width="5" height="27" fill="#e2541b"/>
-  <polygon points="10.5,27 19.5,27 15,34" fill="#e2541b"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="3 2.25 34 34">
+  <style>
+    .a { stop-color: #2e9bc4 }
+    .b { stop-color: #12527e }
+    @media (prefers-color-scheme: dark) {
+      .a { stop-color: #5cc0e6 }
+      .b { stop-color: #1f78b4 }
+    }
+  </style>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" class="a"/>
+      <stop offset="1" class="b"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#g)" d="M20 2.5c6.4 7.7 11.5 14.2 11.5 20.3C31.5 30.3 26.3 36 20 36S8.5 30.3 8.5 22.8C8.5 16.7 13.6 10.2 20 2.5z"/>
+  <rect x="18" y="10.5" width="4" height="15" rx="0.5" fill="#fff"/>
+  <path d="M15 25.5h10L20 32z" fill="#ef7b1c"/>
 </svg>

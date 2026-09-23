@@ -1,6 +1,7 @@
 AddDefaultCharset UTF-8
 DirectoryIndex index.php
 Options -Indexes
+AddType application/manifest+json .webmanifest
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
