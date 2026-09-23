@@ -2,8 +2,8 @@
 /** @var string $slug @var array $svc */
 
 $content = __DIR__ . '/../content/services/' . $slug . '.php';
-$facts   = SERVICE_FACTS[$slug] ?? [];
-$faq     = SERVICE_FAQ[$slug] ?? [];
+$facts   = service_facts()[$slug] ?? [];
+$faq     = service_faq()[$slug] ?? [];
 
 page_start([
     'title' => $svc['h1'] . ' в Донецке и ДНР — ' . SITE['name'],
