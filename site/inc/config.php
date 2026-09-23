@@ -411,7 +411,7 @@ const ARTICLES = [
  * Название подпункта берётся из SERVICES, дублировать его здесь не нужно.
  */
 const NAV = [
-    ['t' => 'Бурение скважин', 'u' => '/uslugi/', 'sub' => [
+    ['t' => 'Бурение', 'u' => '/uslugi/', 'sub' => [
         'pod-klyuch', 'na-pesok', 'na-izvestnyak', 'malogabaritnoe',
         'dacha', 'zimoy', 'yurlicam', 'licenziya',
     ]],

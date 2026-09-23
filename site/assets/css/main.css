@@ -455,7 +455,7 @@ p {
 .hdr__in {
   display: flex;
   align-items: center;
-  gap: clamp(0.75rem, 2vw, 1.75rem);
+  gap: clamp(0.6rem, 1.4vw, 1.15rem);
   min-height: 78px;
 }
 
@@ -496,7 +496,7 @@ p {
 .nav {
   display: flex;
   align-items: center;
-  gap: 1.35rem;
+  gap: clamp(0.7rem, 1.1vw, 1.1rem);
 }
 
 .nav__link {
@@ -588,7 +588,7 @@ p {
   color: var(--or-600);
 }
 
-@media (min-width: 1141px) {
+@media (min-width: 1241px) {
   .nav__item:hover .nav__sub,
   .nav__item:focus-within .nav__sub,
   .nav__item [aria-expanded="true"] + .nav__sub {
@@ -722,7 +722,7 @@ p {
   transform: translateY(-6px) rotate(-45deg);
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1240px) {
   .burger {
     display: flex;
   }
@@ -761,14 +761,58 @@ p {
     visibility: visible;
   }
 
-  .nav a {
+  .nav__link {
+    width: 100%;
+    justify-content: space-between;
     padding: 0.95rem 0;
     border-bottom: 1px solid var(--line);
     font-size: 1.06rem;
+    text-align: left;
   }
 
   .nav__link::after {
     display: none;
+  }
+
+  /* в выезжающем меню список раскрывается нажатием, а не наведением */
+  .nav .nav__sub {
+    position: static;
+    min-width: 0;
+    padding: 0.2rem 0 0.7rem;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+  }
+
+  .nav .nav__sub::before {
+    display: none;
+  }
+
+  .nav .nav__toggle[aria-expanded="true"] + .nav__sub {
+    display: block;
+  }
+
+  .nav__toggle[aria-expanded="true"] .nav__chev {
+    transform: rotate(180deg);
+  }
+
+  .nav .nav__sub a {
+    padding: 0.6rem 0 0.6rem 1rem;
+    font-size: 1rem;
+    border-left: 1px solid var(--line);
+    border-bottom: 0;
+    border-radius: 0;
+  }
+
+  .nav .nav__sub-all {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
