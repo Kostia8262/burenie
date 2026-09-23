@@ -183,8 +183,14 @@ function site_graph(array $m): array
 
 /**
  * Каталог услуг для схемы организации: группы из SERVICE_GROUPS, внутри —
- * услуги этой группы. Цену не указываем: прайс заказчиком не подтверждён
- * (PRICES_CONFIRMED), а врать в разметке нельзя — за это прилетает санкция.
+ * услуги этой группы.
+ *
+ * Цена появляется только у проходки и только как «за один метр». Голым
+ * 'price' => 3000 поисковик прочитал бы «скважина за 3000 рублей», и в
+ * ИИ-ответе эта цифра уйдёт к человеку без единой оговорки — поэтому здесь
+ * UnitPriceSpecification с referenceQuantity в метрах и minPrice, раз цена
+ * «от». Условие отбора то же, что у видимого чипа на странице услуги
+ * (pages/service.php), чтобы разметка не обещала больше, чем говорит текст.
  */
 function offer_catalog(): array
 {
@@ -192,7 +198,7 @@ function offer_catalog(): array
     foreach (SERVICE_GROUPS as $group => $label) {
         $items = [];
         foreach (services_in($group) as $slug => $s) {
-            $items[] = [
+            $offer = [
                 '@type'       => 'Offer',
                 'url'         => abs_url(service_path($slug)),
                 'itemOffered' => [
@@ -204,6 +210,10 @@ function offer_catalog(): array
                     'provider'    => ['@id' => SITE['base'] . '/#org'],
                 ],
             ];
+            if ($price = drill_price_spec($s)) {
+                $offer['priceSpecification'] = $price;
+            }
+            $items[] = $offer;
         }
         if ($items) {
             $groups[] = [
@@ -217,6 +227,33 @@ function offer_catalog(): array
         '@type'           => 'OfferCatalog',
         'name'            => 'Услуги ' . SITE['name'],
         'itemListElement' => $groups,
+    ];
+}
+
+/**
+ * Цена проходки за метр — или null, если услуга метрами не считается.
+ * Обсадная труба, обустройство и насос в неё не входят: об этом говорит и
+ * страница цен, и главная, поэтому то же сказано в description.
+ */
+function drill_price_spec(array $svc): ?array
+{
+    if (!PRICES_CONFIRMED
+        || ($svc['group'] ?? '') !== 'burenie'
+        || ($svc['unit'] ?? '') !== 'метр') {
+        return null;
+    }
+    return [
+        '@type'             => 'UnitPriceSpecification',
+        'minPrice'          => PRICE_DRILL_FROM,
+        'priceCurrency'     => 'RUB',
+        'unitCode'          => 'MTR',
+        'referenceQuantity' => [
+            '@type'    => 'QuantitativeValue',
+            'value'    => 1,
+            'unitCode' => 'MTR',
+        ],
+        'description' => 'Проходка в обычном грунте. Обсадная труба, обустройство '
+                       . 'и насос считаются отдельно, по известняку дороже.',
     ];
 }
 

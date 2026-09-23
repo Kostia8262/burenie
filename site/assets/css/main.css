@@ -1283,10 +1283,19 @@ p {
 }
 
 .row span {
+  /* на телефоне описание скрыто: три блока таких карточек подряд иначе
+     растягивают страницу; заголовка со стрелкой хватает, чтобы выбрать */
+  display: none;
   grid-column: 1;
   color: var(--ink-2);
   font-size: 0.93rem;
   line-height: 1.45;
+}
+
+@media (min-width: 620px) {
+  .row span {
+    display: block;
+  }
 }
 
 .row .ico {
@@ -2628,8 +2637,10 @@ p {
   padding: clamp(1.1rem, 2.5vw, 1.5rem);
   background: var(--blue-05);
   border: 1px solid var(--line);
-  border-left: 3px solid var(--or);
   border-radius: var(--r);
+  /* Акцент внутренней тенью, а не border-left: полоска слева считается
+     side-tab, который в проекте уже дважды снимали, и она ломает радиус. */
+  box-shadow: inset 3px 0 0 var(--or);
 }
 
 .answer__h {
