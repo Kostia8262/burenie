@@ -33,9 +33,21 @@ if (BASE !== '' && str_starts_with($path, BASE)) {
     $path = substr($path, strlen(BASE)) ?: '/';
 }
 
-// один канонический вид: всегда со слешем на конце, всегда в нижнем регистре
-if ($path !== '/' && !str_ends_with($path, '/') && !str_contains(basename($path), '.')) {
-    header('Location: ' . BASE . $path . '/', true, 301);
+// один канонический вид: всегда со слешем на конце, всегда в нижнем регистре.
+// Оба приведения делаем за один 301, чтобы /USLUGI не гонял браузер дважды.
+$canon = $path;
+if (preg_match('/[A-ZА-ЯЁ]/u', $canon)) {
+    // без mbstring — только латиница, но это все наши реальные адреса;
+    // ронять сайт из-за заглавной буквы в URL точно не стоит
+    $canon = function_exists('mb_strtolower')
+        ? mb_strtolower($canon, 'UTF-8')
+        : strtolower($canon);
+}
+if ($canon !== '/' && !str_ends_with($canon, '/') && !str_contains(basename($canon), '.')) {
+    $canon .= '/';
+}
+if ($canon !== $path) {
+    header('Location: ' . BASE . $canon, true, 301);
     exit;
 }
 

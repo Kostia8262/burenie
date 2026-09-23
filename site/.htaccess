@@ -68,6 +68,16 @@ ErrorDocument 503 /500.html
 </IfModule>
 
 <IfModule mod_headers.c>
+  # HSTS. Ставим только на https-ответ: на http браузер его всё равно не читает.
+  #
+  # max-age намеренно маленький — 5 минут. Сертификат Let's Encrypt выпущен
+  # 19.09.2026, автопродление ещё ни разу не отрабатывало. Длинный max-age
+  # кешируется у посетителя намертво: протухнет сертификат — сайт ляжет для
+  # всех, кто хоть раз заходил, и снятие заголовка с сервера это не починит.
+  # После первого успешного автопродления поднять до
+  # "max-age=31536000; includeSubDomains" — includeSubDomains заодно уберёт
+  # лишний прыжок через www.
+  Header always set Strict-Transport-Security "max-age=300" "expr=%{HTTPS} == 'on' || %{HTTP:X-Forwarded-Proto} == 'https'"
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set X-Frame-Options "SAMEORIGIN"

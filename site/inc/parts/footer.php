@@ -77,6 +77,8 @@
           <li><a href="<?= e(u('/o-kompanii/')) ?>">О компании</a></li>
           <li><a href="<?= e(u('/ceny/')) ?>">Цены и расчёт</a></li>
           <li><a href="<?= e(u('/geografiya/')) ?>">Где мы работаем</a></li>
+          <li><a href="<?= e(u('/stati/')) ?>">Статьи о скважинах</a></li>
+          <li><a href="<?= e(u('/kontakty/')) ?>">Контакты</a></li>
           <li><a href="<?= e(u('/rekvizity/')) ?>">Реквизиты для оплаты</a></li>
           <li><a href="<?= e(u('/politika/')) ?>">Политика конфиденциальности</a></li>
           <li><a href="<?= e(u('/soglasie/')) ?>">Согласие на обработку данных</a></li>
