@@ -74,6 +74,8 @@
           <li style="color:var(--on-deep-2);font-size:.95rem"><?= e(SITE['hours']) ?></li>
         </ul>
         <ul style="margin-top:1.1rem">
+          <li><a href="<?= e(u('/o-kompanii/')) ?>">О компании</a></li>
+          <li><a href="<?= e(u('/ceny/')) ?>">Цены и расчёт</a></li>
           <li><a href="<?= e(u('/geografiya/')) ?>">Где мы работаем</a></li>
           <li><a href="<?= e(u('/rekvizity/')) ?>">Реквизиты для оплаты</a></li>
           <li><a href="<?= e(u('/politika/')) ?>">Политика конфиденциальности</a></li>
