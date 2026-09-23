@@ -114,6 +114,12 @@ switch ($seg[0] ?? '') {
     case 'politika':
         view('privacy');
 
+    case 'soglasie':
+        view('consent');
+
+    case 'usloviya':
+        view('terms');
+
     case 'spasibo':
         view('thanks');
 }

@@ -3,6 +3,8 @@ Allow: /
 Disallow: /spasibo/
 Disallow: /rekvizity/
 Disallow: /politika/
+Disallow: /soglasie/
+Disallow: /usloviya/
 Disallow: /zayavka/
 
 Sitemap: https://sos-bureniednr.ru/sitemap.xml

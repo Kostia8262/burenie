@@ -31,7 +31,7 @@ $_SERVER['HTTP_HOST']      = 'sos-bureniednr.ru';
 require $src . '/inc/config.php';
 
 $paths = ['/', '/uslugi/', '/ceny/', '/geografiya/', '/stati/', '/o-kompanii/',
-          '/kontakty/', '/rekvizity/', '/politika/', '/spasibo/'];
+          '/kontakty/', '/rekvizity/', '/politika/', '/soglasie/', '/usloviya/', '/spasibo/'];
 foreach (array_keys(SERVICES) as $s) $paths[] = '/uslugi/' . $s . '/';
 foreach (array_keys(CITIES)   as $c) $paths[] = '/geografiya/' . $c . '/';
 foreach (array_keys(ARTICLES) as $a) $paths[] = '/stati/' . $a . '/';

@@ -4,6 +4,38 @@
 
   var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- выпадающие разделы меню ---------- */
+  var toggles = document.querySelectorAll(".nav__toggle");
+
+  if (toggles.length) {
+    toggles.forEach(function (t) {
+      t.addEventListener("click", function () {
+        var open = t.getAttribute("aria-expanded") === "true";
+        toggles.forEach(function (o) {
+          o.setAttribute("aria-expanded", "false");
+        });
+        t.setAttribute("aria-expanded", String(!open));
+      });
+    });
+
+    // клик мимо меню и Esc закрывают раскрытый раздел
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest || !e.target.closest("[data-submenu]")) {
+        toggles.forEach(function (o) {
+          o.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        toggles.forEach(function (o) {
+          o.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+  }
+
   /* ---------- окно заявки ---------- */
   var modal = document.getElementById("leadModal");
 
@@ -97,6 +129,80 @@
       io.observe(core);
     }
   }
+
+  /* ---------- лента снимков ---------- */
+  document.querySelectorAll("[data-shots]").forEach(function (box) {
+    var track = box.querySelector(".shots__track");
+    var dotBox = box.querySelector(".shots__dots");
+    if (!track || !dotBox) return;
+
+    var items = [].slice.call(track.querySelectorAll(".shots__item"));
+    var dots = [].slice.call(dotBox.querySelectorAll(".shots__dot"));
+    if (items.length < 2 || dots.length !== items.length) return;
+
+    dotBox.hidden = false;
+
+    function show(i) {
+      track.scrollTo({
+        left: items[i].offsetLeft - track.offsetLeft,
+        behavior: calm ? "auto" : "smooth",
+      });
+    }
+
+    function mark(i) {
+      dots.forEach(function (d, n) {
+        d.classList.toggle("is-on", n === i);
+        if (n === i) d.setAttribute("aria-current", "true");
+        else d.removeAttribute("aria-current");
+      });
+    }
+
+    dots.forEach(function (d, i) {
+      d.addEventListener("click", function () {
+        show(i);
+        mark(i);
+      });
+    });
+
+    var tick;
+    track.addEventListener("scroll", function () {
+      clearTimeout(tick);
+      tick = setTimeout(function () {
+        var i = Math.round(track.scrollLeft / track.clientWidth);
+        mark(Math.max(0, Math.min(items.length - 1, i)));
+      }, 90);
+    });
+
+    track.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      e.preventDefault();
+      var cur = Math.round(track.scrollLeft / track.clientWidth);
+      var next = cur + (e.key === "ArrowRight" ? 1 : -1);
+      if (next < 0 || next >= items.length) return;
+      show(next);
+      mark(next);
+    });
+
+    /* автопрокрутка раз в 3 с; стоит, пока человек смотрит или листает сам */
+    var cur = 0, hold = false;
+    track.addEventListener("scroll", function () {
+      cur = Math.round(track.scrollLeft / track.clientWidth);
+    });
+    ["mouseenter", "focusin", "touchstart"].forEach(function (ev) {
+      box.addEventListener(ev, function () { hold = true; }, { passive: true });
+    });
+    ["mouseleave", "focusout", "touchend"].forEach(function (ev) {
+      box.addEventListener(ev, function () { hold = false; }, { passive: true });
+    });
+    setInterval(function () {
+      if (hold || document.hidden) return;
+      var r = track.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      var next = (cur + 1) % items.length;
+      show(next);
+      mark(next);
+    }, 3000);
+  });
 
   /* ---------- телефонная маска ---------- */
   document.querySelectorAll('input[type="tel"]').forEach(function (inp) {
