@@ -436,6 +436,12 @@ const GA_ID      = '';   // TODO: G-XXXXXXXXXX
  * Приём заявок.
  * -------------------------------------------------------------------------- */
 
+/**
+ * Куда падают заявки с форм. Отдельно от SITE['email']: тот показан на сайте
+ * как контактный адрес, а этот — рабочий ящик менеджера.
+ */
+const LEAD_EMAIL = 'my.computer.academy25@gmail.com';
+
 const LEAD_TG_TOKEN = '';
 const LEAD_TG_CHAT  = '';
 const LEAD_LOG      = __DIR__ . '/../../leads.log';

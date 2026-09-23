@@ -61,14 +61,15 @@ $body = implode("\n", $lines);
 @file_put_contents(LEAD_LOG, $body . "\n" . str_repeat('-', 40) . "\n", FILE_APPEND | LOCK_EX);
 
 // письмо
-$subject = '=?UTF-8?B?' . base64_encode('Заявка с сайта: ' . $name) . '?=';
+// телефон в теме: менеджер видит заявку из списка писем, не открывая
+$subject = '=?UTF-8?B?' . base64_encode('Заявка: ' . $name . ', ' . $phone) . '?=';
 $headers = implode("\r\n", [
     'From: Сайт <noreply@' . SITE['host'] . '>',
     'Reply-To: noreply@' . SITE['host'],
     'Content-Type: text/plain; charset=UTF-8',
     'X-Mailer: PHP/' . PHP_VERSION,
 ]);
-@mail(SITE['email'], $subject, $body, $headers);
+@mail(LEAD_EMAIL, $subject, $body, $headers);
 
 // telegram, если бот настроен
 if (LEAD_TG_TOKEN !== '' && LEAD_TG_CHAT !== '') {
