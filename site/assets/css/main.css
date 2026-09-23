@@ -2364,3 +2364,100 @@ p {
     clip-path: none;
   }
 }
+
+/* ===================== иллюстрации =====================
+   Схемы из assets/img/illu — рисунки, а не снимки объектов.
+   Фон картинок прозрачный, поэтому подложку даёт карточка. */
+
+/* шапка услуги и статьи: текст слева, схема справа */
+.phead--art .wrap {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .phead--art .wrap {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+
+.phead__art {
+  width: 100%;
+  max-width: 460px;
+  max-height: 340px;
+  object-fit: contain;
+  justify-self: center;
+  filter: drop-shadow(0 18px 28px rgba(13, 43, 58, 0.12));
+}
+
+@media (max-width: 899px) {
+  .phead__art {
+    order: -1;
+    max-height: 210px;
+  }
+}
+
+/* обложка карточки статьи */
+.post__art {
+  width: calc(100% + 2 * clamp(1.35rem, 2vw, 1.7rem));
+  max-width: none;
+  height: 168px;
+  margin: calc(-1 * clamp(1.35rem, 2vw, 1.7rem));
+  margin-bottom: 0.5rem;
+  padding: 1rem 1.25rem 0.4rem;
+  object-fit: contain;
+  background: radial-gradient(120% 90% at 50% 100%, var(--blue-10), var(--blue-05) 60%, var(--s0));
+  border-radius: var(--r) var(--r) 0 0;
+}
+
+/* блок цены: инженерный чертёж скважины у левого края, сетка уходит под текст */
+.sec--blueprint::before {
+  background-image: url("../img/illu/bg/blueprint.webp");
+  background-size: auto 100%;
+  background-position: left bottom;
+  opacity: 0.2;
+  -webkit-mask-image: linear-gradient(90deg, #000 20%, transparent 60%);
+  mask-image: linear-gradient(90deg, #000 20%, transparent 60%);
+}
+
+/* фоны-рисунки линиями на тёмной и синей полосах */
+.sec--topo,
+.sec--blueprint,
+.cta {
+  isolation: isolate;
+}
+
+.sec--topo::before,
+.sec--blueprint::before,
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+}
+
+.sec--topo::before {
+  background-image: url("../img/illu/bg/topo.webp");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+}
+
+.cta::before {
+  background-image: url("../img/illu/bg/rig-lines.webp");
+  background-size: auto 115%;
+  background-position: right -90px bottom;
+  opacity: 0.13;
+}
+
+@media (max-width: 879px) {
+  .cta::before {
+    background-size: auto 70%;
+    background-position: right -30px bottom;
+    opacity: 0.12;
+  }
+}

@@ -23,10 +23,14 @@ page_start([
 echo crumbs([['Главная', '/'], ['Статьи', '/stati/'], [$art['title'], article_path($slug)]]);
 ?>
 
-<div class="phead">
+<?php $cover = illu('art/' . $slug, 'phead__art', false); ?>
+<div class="phead<?= $cover ? ' phead--art' : '' ?>">
   <div class="wrap">
-    <h1 class="d1"><?= e($art['title']) ?></h1>
-    <p class="lead"><?= e($art['excerpt']) ?></p>
+    <div class="phead__txt">
+      <h1 class="d1"><?= e($art['title']) ?></h1>
+      <p class="lead"><?= e($art['excerpt']) ?></p>
+    </div>
+    <?= $cover ?>
   </div>
 </div>
 
@@ -64,6 +68,7 @@ echo crumbs([['Главная', '/'], ['Статьи', '/stati/'], [$art['title'
       unset($rest[$slug]);
       foreach (array_slice($rest, 0, 3, true) as $s2 => $a2): ?>
         <a class="post" href="<?= e(article_url($s2)) ?>">
+          <?= illu('art/' . $s2, 'post__art') ?>
           <span class="post__meta">
             <span class="post__topic"><?= e($a2['topic']) ?></span>
             <time datetime="<?= e($a2['date']) ?>"><?= e(ru_date($a2['date'])) ?></time>

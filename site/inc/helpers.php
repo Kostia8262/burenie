@@ -141,3 +141,21 @@ function schema(array $data): string
         . json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
         . '</script>';
 }
+
+/**
+ * Иллюстрация-схема из assets/img/illu/. Если файла нет — пустая строка,
+ * поэтому новая услуга или статья без картинки просто выводится без неё.
+ * Это рисунки, а не снимки объектов: своих фото у нас почти нет.
+ */
+function illu(string $name, string $class, bool $lazy = true): string
+{
+    $rel = '/assets/img/illu/' . $name . '.webp';
+    $file = __DIR__ . '/..' . $rel;
+    if (!is_file($file)) {
+        return '';
+    }
+    [$w, $h] = @getimagesize($file) ?: [640, 480];
+    return '<img class="' . e($class) . '" src="' . e(u($rel)) . '" alt="" width="' . $w
+        . '" height="' . $h . '"' . ($lazy ? ' loading="lazy"' : ' fetchpriority="high"')
+        . ' decoding="async">';
+}

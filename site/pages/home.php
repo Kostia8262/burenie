@@ -56,7 +56,7 @@ page_start([
 </section>
 
 <!-- ===================== цена и заявка ===================== -->
-<section class="sec sec--s1" id="ceny">
+<section class="sec sec--s1 sec--blueprint" id="ceny">
   <div class="wrap split">
     <div>
       <h2 class="d2">Почему мы не вешаем цену за метр на главную</h2>
@@ -99,8 +99,9 @@ page_start([
       <h2 class="d2">Пять шагов, и в доме вода</h2>
     </div>
     <ol class="steps">
-      <?php foreach (STEPS as $s): ?>
+      <?php foreach (STEPS as $i => $s): ?>
         <li>
+          <?= illu('step/' . ($i + 1), 'steps__art') ?>
           <h3><?= e($s['t']) ?></h3>
           <p><?= e($s['d']) ?></p>
         </li>
@@ -110,7 +111,7 @@ page_start([
 </section>
 
 <!-- ===================== география ===================== -->
-<section class="sec sec--deep">
+<section class="sec sec--deep sec--topo">
   <div class="wrap split">
     <div>
       <h2 class="d2">Куда выезжаем</h2>
@@ -176,6 +177,7 @@ page_start([
     <div class="posts">
       <?php foreach (array_slice(ARTICLES, 0, 3, true) as $slug => $a): ?>
         <a class="post" href="<?= e(article_url($slug)) ?>">
+          <?= illu('art/' . $slug, 'post__art') ?>
           <span class="post__meta">
             <span class="post__topic"><?= e($a['topic']) ?></span>
             <time datetime="<?= e($a['date']) ?>"><?= e(ru_date($a['date'])) ?></time>

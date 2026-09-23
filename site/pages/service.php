@@ -25,15 +25,19 @@ page_start([
 echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title'], service_path($slug)]]);
 ?>
 
-<div class="phead">
+<?php $art = illu('svc/' . $slug, 'phead__art', false); ?>
+<div class="phead<?= $art ? ' phead--art' : '' ?>">
   <div class="wrap">
-    <h1 class="d1"><?= e($svc['h1']) ?></h1>
-    <p class="lead"><?= e($svc['short']) ?></p>
-    <div class="phead__meta">
-      <span>Донецк, Макеевка и вся ДНР</span>
-      <span>Выезд и расчёт — <b>бесплатно</b></span>
-      <span>Паспорт скважины и гарантия</span>
+    <div class="phead__txt">
+      <h1 class="d1"><?= e($svc['h1']) ?></h1>
+      <p class="lead"><?= e($svc['short']) ?></p>
+      <div class="phead__meta">
+        <span>Донецк, Макеевка и вся ДНР</span>
+        <span>Выезд и расчёт — <b>бесплатно</b></span>
+        <span>Паспорт скважины и гарантия</span>
+      </div>
     </div>
+    <?= $art ?>
   </div>
 </div>
 

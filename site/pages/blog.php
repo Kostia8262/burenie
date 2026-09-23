@@ -22,6 +22,7 @@ echo crumbs([['Главная', '/'], ['Статьи', '/stati/']]);
     <div class="posts">
       <?php foreach (ARTICLES as $slug => $a): ?>
         <a class="post" href="<?= e(article_url($slug)) ?>">
+          <?= illu('art/' . $slug, 'post__art') ?>
           <span class="post__meta">
             <span class="post__topic"><?= e($a['topic']) ?></span>
             <time datetime="<?= e($a['date']) ?>"><?= e(ru_date($a['date'])) ?></time>
