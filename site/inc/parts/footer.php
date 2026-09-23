@@ -88,6 +88,8 @@
   </div>
 </footer>
 
+<?php include __DIR__ . '/lead-modal.php'; ?>
+
 <script src="<?= e(u('/assets/js/app.js')) ?>?v=<?= ASSET_V ?>" defer></script>
 </body>
 </html>

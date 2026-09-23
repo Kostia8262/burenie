@@ -1,3 +1,7 @@
 .playwright-mcp/
 .claude/settings.local.json
 Thumbs.db
+
+# заявки с форм — рабочие данные, не код
+leads.log
+site/leads.log

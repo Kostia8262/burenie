@@ -555,6 +555,23 @@ p {
   color: var(--or-600);
 }
 
+/* кнопка заявки в шапке: телефон стоит между меню и ею */
+.hdr__cta {
+  flex: none;
+  padding: 0.7rem 1.25rem;
+  font-size: 0.96rem;
+  box-shadow: none;
+}
+
+.hdr__cta:hover {
+  box-shadow: var(--sh-1);
+}
+
+/* дубль кнопки внутри выезжающего меню — только на узких экранах */
+.nav__cta {
+  display: none;
+}
+
 .burger {
   display: none;
   width: 46px;
@@ -614,6 +631,15 @@ p {
 @media (max-width: 1140px) {
   .burger {
     display: flex;
+  }
+
+  .hdr__cta {
+    display: none;
+  }
+
+  .nav__cta {
+    display: inline-flex;
+    margin-top: 1rem;
   }
 
   .nav {
