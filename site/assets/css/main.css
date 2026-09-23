@@ -1678,6 +1678,47 @@ p {
   transform: translateY(-2px);
 }
 
+/* на телефоне блок «куда выезжаем» занимал пол-экрана: список городов
+   переносился на четыре ряда. Свернули его в две строки с прокруткой вбок
+   и поджали текст — высота падает примерно вдвое */
+@media (max-width: 619.98px) {
+  .sec--topo .split {
+    gap: 1.1rem;
+  }
+
+  .sec--topo .lead {
+    font-size: 1rem;
+  }
+
+  .sec--topo .muted {
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
+  }
+
+  .sec--topo .cities {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    grid-template-rows: repeat(2, auto);
+    gap: 0.5rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gut));
+    padding-inline: var(--gut);
+    padding-block: 3px;
+  }
+
+  .sec--topo .cities::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sec--topo .cities a {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.9rem;
+  }
+}
+
 /* ===================== FAQ ===================== */
 
 /* шапка блока вопросов: заголовок и телефон в одну строку, а не в колонку,
