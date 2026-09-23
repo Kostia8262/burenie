@@ -3,15 +3,27 @@ page_start([
     'title' => 'Бурение скважин на воду в Донецке и ДНР — СОС Бурение',
     'desc'  => 'Бурим и обустраиваем скважины на воду в Донецке, Макеевке и по всей ДНР. Малогабаритная установка проходит в калитку, паспорт скважины и гарантия на работы. Выезд инженера и расчёт — бесплатно.',
     'path'  => '/',
-    'schema' => [
-        '@context'   => 'https://schema.org',
-        '@type'      => 'FAQPage',
-        'mainEntity' => array_map(fn($f) => [
-            '@type'          => 'Question',
-            'name'           => $f['q'],
-            'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f['a']],
-        ], FAQ),
-    ],
+    'schema' => faq_schema(FAQ, '/'),
+    // Порядок работ разбором: по нему поисковик отвечает на «как заказать
+    // скважину» шагами, а не пересказом рекламного абзаца.
+    'schemas' => [[
+        '@context'    => 'https://schema.org',
+        '@type'       => 'HowTo',
+        '@id'         => abs_url('/') . '#howto',
+        'name'        => 'Как заказать скважину на воду',
+        'description' => 'Порядок работ от звонка до сдачи скважины с паспортом и гарантией.',
+        'inLanguage'  => 'ru-RU',
+        'totalTime'   => 'P2D',
+        'supply'      => [['@type' => 'HowToSupply', 'name' => 'Участок с подъездом от 90 см']],
+        'tool'        => [['@type' => 'HowToTool', 'name' => 'Малогабаритная буровая установка']],
+        'step'        => array_map(fn($i, $st) => [
+            '@type'    => 'HowToStep',
+            'position' => $i + 1,
+            'name'     => $st['t'],
+            'text'     => $st['d'],
+            'url'      => abs_url('/') . '#kak-rabotaem',
+        ], array_keys(STEPS), STEPS),
+    ]],
 ]);
 ?>
 
@@ -93,7 +105,7 @@ page_start([
 </section>
 
 <!-- ===================== как работаем ===================== -->
-<section class="sec">
+<section class="sec" id="kak-rabotaem">
   <div class="wrap">
     <div class="sec-head">
       <h2 class="d2">Пять шагов, и в доме вода</h2>
@@ -101,7 +113,7 @@ page_start([
     <ol class="steps">
       <?php foreach (STEPS as $i => $s): ?>
         <li>
-          <?= illu('step/' . ($i + 1), 'steps__art') ?>
+          <?= illu_of('step/' . ($i + 1), 'steps__art') ?>
           <h3><?= e($s['t']) ?></h3>
           <p><?= e($s['d']) ?></p>
         </li>
@@ -177,7 +189,7 @@ page_start([
     <div class="posts">
       <?php foreach (array_slice(ARTICLES, 0, 3, true) as $slug => $a): ?>
         <a class="post" href="<?= e(article_url($slug)) ?>">
-          <?= illu('art/' . $slug, 'post__art') ?>
+          <?= illu_of('art/' . $slug, 'post__art') ?>
           <span class="post__meta">
             <span class="post__topic"><?= e($a['topic']) ?></span>
             <time datetime="<?= e($a['date']) ?>"><?= e(ru_date($a['date'])) ?></time>

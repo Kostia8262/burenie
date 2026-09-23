@@ -2,6 +2,8 @@
 /** @var string $slug @var array $svc */
 
 $content = __DIR__ . '/../content/services/' . $slug . '.php';
+$facts   = SERVICE_FACTS[$slug] ?? [];
+$faq     = SERVICE_FAQ[$slug] ?? [];
 
 page_start([
     'title' => $svc['h1'] . ' в Донецке и ДНР — ' . SITE['name'],
@@ -20,12 +22,16 @@ page_start([
         )),
         'url' => abs_url(service_path($slug)),
     ],
+    // Вопросы отдельной сущностью: по ним собираются ответы Яндекса и Google.
+    'schemas' => $faq ? [faq_schema($faq, service_path($slug))] : [],
+    // Выжимка фактов — фрагмент, который поисковику разрешено зачитать.
+    'speakable' => '.answer',
 ]);
 
 echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title'], service_path($slug)]]);
 ?>
 
-<?php $art = illu('svc/' . $slug, 'phead__art', false); ?>
+<?php $art = illu_of('svc/' . $slug, 'phead__art', false); ?>
 <div class="phead<?= $art ? ' phead--art' : '' ?>">
   <div class="wrap">
     <div class="phead__txt">
@@ -50,6 +56,7 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title
 <section class="sec">
   <div class="wrap split">
     <article class="prose">
+      <?= facts_block($facts) ?>
       <?php if (is_file($content)) {
           include $content;
       } else { ?>
@@ -75,6 +82,8 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title
     </aside>
   </div>
 </section>
+
+<?= faq_block($faq, 'Вопросы по услуге') ?>
 
 <section class="sec sec--s1 sec--tight">
   <div class="wrap">

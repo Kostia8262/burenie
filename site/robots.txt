@@ -1,3 +1,4 @@
+# Обычные поисковые роботы -----------------------------------------------------
 User-agent: *
 Allow: /
 Disallow: /spasibo/
@@ -6,5 +7,74 @@ Disallow: /politika/
 Disallow: /soglasie/
 Disallow: /usloviya/
 Disallow: /zayavka/
+
+# Яндекс ----------------------------------------------------------------------
+# Метки рекламы и переходов не должны плодить дубли страниц.
+User-agent: Yandex
+Allow: /
+Disallow: /spasibo/
+Disallow: /rekvizity/
+Disallow: /politika/
+Disallow: /soglasie/
+Disallow: /usloviya/
+Disallow: /zayavka/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid&from&_openstat
+
+# YandexAdditional собирает данные для Нейро и ответов Алисы — пускаем.
+User-agent: YandexAdditional
+Allow: /
+
+User-agent: YandexAdditionalBot
+Allow: /
+
+# Google ----------------------------------------------------------------------
+# Google-Extended решает, можно ли брать сайт в AI Overviews и ответы Gemini.
+# Без явного Allow часть обвязки считает сайт закрытым для цитирования.
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Disallow: /spasibo/
+Disallow: /rekvizity/
+Disallow: /politika/
+Disallow: /soglasie/
+Disallow: /usloviya/
+Disallow: /zayavka/
+
+# Прочие ИИ-поисковики --------------------------------------------------------
+# Нам нужны ссылки и упоминания, поэтому не закрываемся.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
 
 Sitemap: https://sos-bureniednr.ru/sitemap.xml

@@ -18,12 +18,21 @@ page_start([
         'author'        => ['@type' => 'Organization', 'name' => SITE['name'], '@id' => SITE['base'] . '/#org'],
         'publisher'     => ['@id' => SITE['base'] . '/#org'],
         'mainEntityOfPage' => abs_url(article_path($slug)),
+        'isPartOf'      => ['@id' => SITE['base'] . '/#website'],
+        'about'         => ['@type' => 'Thing', 'name' => $art['topic'] ?? 'Скважины на воду'],
+        'speakable'     => [
+            '@type'       => 'SpeakableSpecification',
+            'cssSelector' => ['.lead'],
+        ],
+        ...article_extras($slug, $art),
     ],
+    // Разрешаем зачитать вводный абзац: в нём ответ на заголовок статьи.
+    'speakable' => '.lead',
 ]);
 echo crumbs([['Главная', '/'], ['Статьи', '/stati/'], [$art['title'], article_path($slug)]]);
 ?>
 
-<?php $cover = illu('art/' . $slug, 'phead__art', false); ?>
+<?php $cover = illu_of('art/' . $slug, 'phead__art', false); ?>
 <div class="phead<?= $cover ? ' phead--art' : '' ?>">
   <div class="wrap">
     <div class="phead__txt">
@@ -68,7 +77,7 @@ echo crumbs([['Главная', '/'], ['Статьи', '/stati/'], [$art['title'
       unset($rest[$slug]);
       foreach (array_slice($rest, 0, 3, true) as $s2 => $a2): ?>
         <a class="post" href="<?= e(article_url($s2)) ?>">
-          <?= illu('art/' . $s2, 'post__art') ?>
+          <?= illu_of('art/' . $s2, 'post__art') ?>
           <span class="post__meta">
             <span class="post__topic"><?= e($a2['topic']) ?></span>
             <time datetime="<?= e($a2['date']) ?>"><?= e(ru_date($a2['date'])) ?></time>

@@ -17,6 +17,7 @@ define('BASE', getenv('SOS_BASE') !== false
 require __DIR__ . '/inc/config.php';
 require __DIR__ . '/inc/helpers.php';
 require __DIR__ . '/inc/core.php';
+require __DIR__ . '/inc/answers.php';
 require __DIR__ . '/inc/parts/icons.php';
 require __DIR__ . '/inc/parts/analytics.php';
 require __DIR__ . '/inc/parts/directory.php';
@@ -80,6 +81,14 @@ function forbidden(): never
 if ($path === '/sitemap.xml') {
     header('Content-Type: application/xml; charset=utf-8');
     require __DIR__ . '/pages/sitemap.php';
+    exit;
+}
+
+// ---- карта сайта для языковых моделей --------------------------------------
+
+if ($path === '/llms.txt') {
+    header('Content-Type: text/plain; charset=utf-8');
+    require __DIR__ . '/pages/llms.php';
     exit;
 }
 

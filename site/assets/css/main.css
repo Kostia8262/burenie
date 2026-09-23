@@ -2598,3 +2598,69 @@ p {
   font-size: 0.95rem;
   line-height: 1.5;
 }
+
+/* ===========================================================================
+   Блок «Коротко» — выжимка фактов под заголовком страницы.
+
+   Нужен двум читателям сразу. Человеку он даёт ответ, не заставляя читать
+   всю страницу. Поисковику — готовый фрагмент: Яндекс и Google собирают
+   короткий ответ из пар «подпись — значение», и такой блок попадает в него
+   охотнее, чем абзац связного текста. Поэтому он стоит первым в .prose и
+   помечен как speakable.
+   =========================================================================== */
+
+.answer {
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  background: var(--blue-05);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--or);
+  border-radius: var(--r);
+}
+
+.answer__h {
+  margin: 0 0 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sky-600);
+}
+
+.answer__list {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.answer__row {
+  display: grid;
+  gap: 0.15rem 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.answer__row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* На узком экране подпись идёт над значением: в две колонки на 375 px
+   значения ломаются по слогам. */
+@media (min-width: 560px) {
+  .answer__row {
+    grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+    align-items: baseline;
+  }
+}
+
+.answer dt {
+  margin: 0;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.answer dd {
+  margin: 0;
+  color: var(--ink);
+}

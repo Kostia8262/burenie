@@ -3,6 +3,18 @@
 $content = __DIR__ . '/../content/cities/' . $slug . '.php';
 $name = $city['name'];
 $case = $city['case'];
+$faq  = city_faq($slug, $city);
+
+/* Короткие факты по городу: выезд, сроки, глубина, документы. */
+$facts = [
+    ['Выезд', empty($city['home'])
+        ? 'из Донецка в ' . city_acc($name) . ' — бесплатно'
+        : $name . ' — наш город, выезд бесплатно'],
+    ['Срок', '1–2 дня на бурение, ещё день на обустройство'],
+    ['Глубина', 'песок обычно 22–45 м, известняк — глубже 70 м'],
+    ['Сезон', 'бурим круглый год, зимой тоже'],
+    ['На выходе', 'паспорт скважины и гарантия на работы'],
+];
 
 page_start([
     'title' => 'Бурение скважин на воду в ' . $case . ' — цена, под ключ',
@@ -16,6 +28,8 @@ page_start([
         'areaServed'  => ['@type' => 'City', 'name' => $name],
         'url'         => abs_url(city_path($slug)),
     ],
+    'schemas'   => [faq_schema($faq, city_path($slug))],
+    'speakable' => '.answer',
 ]);
 echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$name, city_path($slug)]]);
 ?>
@@ -44,6 +58,7 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
 <section class="sec">
   <div class="wrap split">
     <article class="prose">
+      <?= facts_block($facts, 'Коротко о работе в ' . e($case)) ?>
       <?php if (is_file($content)) include $content; ?>
 
       <h2>Что делаем в <?= e($case) ?></h2>
@@ -87,6 +102,8 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
     </aside>
   </div>
 </section>
+
+<?= faq_block($faq, 'Вопросы о бурении в ' . $case) ?>
 
 <section class="sec sec--s1 sec--tight">
   <div class="wrap">
