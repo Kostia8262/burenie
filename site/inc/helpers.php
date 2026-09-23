@@ -146,8 +146,12 @@ function schema(array $data): string
  * Иллюстрация-схема из assets/img/illu/. Если файла нет — пустая строка,
  * поэтому новая услуга или статья без картинки просто выводится без неё.
  * Это рисунки, а не снимки объектов: своих фото у нас почти нет.
+ *
+ * $alt описывает, что на схеме. Пустой alt оставляем только там, где картинка
+ * действительно декоративная: в остальных случаях это потерянный трафик из
+ * поиска по картинкам и пустое место для тех, кто слушает страницу.
  */
-function illu(string $name, string $class, bool $lazy = true): string
+function illu(string $name, string $class, string $alt = '', bool $lazy = true): string
 {
     $rel = '/assets/img/illu/' . $name . '.webp';
     $file = __DIR__ . '/..' . $rel;
@@ -155,7 +159,42 @@ function illu(string $name, string $class, bool $lazy = true): string
         return '';
     }
     [$w, $h] = @getimagesize($file) ?: [640, 480];
-    return '<img class="' . e($class) . '" src="' . e(u($rel)) . '" alt="" width="' . $w
+    return '<img class="' . e($class) . '" src="' . e(u($rel)) . '" alt="' . e($alt)
+        . '" width="' . $w
         . '" height="' . $h . '"' . ($lazy ? ' loading="lazy"' : ' fetchpriority="high"')
         . ' decoding="async">';
+}
+
+/** Описание схемы услуги или статьи. Ключ — тот же, что у файла в illu/. */
+function illu_alt(string $name): string
+{
+    if (str_starts_with($name, 'svc/')) {
+        $slug = substr($name, 4);
+        return SERVICES[$slug]['alt'] ?? '';
+    }
+    if (str_starts_with($name, 'art/')) {
+        $slug = substr($name, 4);
+        return ARTICLES[$slug]['alt'] ?? '';
+    }
+    if (str_starts_with($name, 'step/')) {
+        $n = (int) substr($name, 5);
+        return STEPS[$n - 1]['alt'] ?? '';
+    }
+    return GROUP_ALT[$name] ?? '';
+}
+
+/** Иллюстрация с подписью из конфига — короткая форма для шаблонов. */
+function illu_of(string $name, string $class, bool $lazy = true): string
+{
+    return illu($name, $class, illu_alt($name), $lazy);
+}
+
+/**
+ * Уменьшенная копия фотографии: photo/kesson.jpg -> photo/kesson-480.jpg.
+ * Нужна для srcset — исходники 960x1280, а в вёрстке кадр не шире 428 CSS-px,
+ * то есть на экранах с DPR 1 полноразмерный файл тянется впустую.
+ */
+function shot_src(string $rel, int $w): string
+{
+    return preg_replace('/\.jpg$/', '-' . $w . '.jpg', $rel);
 }

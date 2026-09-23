@@ -25,6 +25,8 @@ $urls = [
     ['/ceny/', '0.9', CONTENT_UPDATED],
     ['/geografiya/', '0.8', CONTENT_UPDATED],
     ['/stati/', '0.8', articles_last_date()],
+    ['/raboty/', '0.7', CONTENT_UPDATED],
+    ['/garantiya/', '0.7', CONTENT_UPDATED],
     ['/o-kompanii/', '0.6', CONTENT_UPDATED],
     ['/kontakty/', '0.7', CONTENT_UPDATED],
 ];

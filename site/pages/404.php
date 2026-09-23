@@ -43,7 +43,7 @@ page_start([
     <div class="posts">
       <?php foreach (['pod-klyuch', 'malogabaritnoe', 'na-pesok'] as $s): ?>
         <a class="post" href="<?= e(service_url($s)) ?>">
-          <?= illu('svc/' . $s, 'post__art') ?>
+          <?= illu_of('svc/' . $s, 'post__art') ?>
           <h3><?= e(SERVICES[$s]['title']) ?></h3>
           <p><?= e(SERVICES[$s]['short']) ?></p>
         </a>

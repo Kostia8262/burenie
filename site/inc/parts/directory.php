@@ -19,7 +19,8 @@ function service_directory(): string
         $o .= '<div class="dir__body">';
         $o .= '<a class="feat" href="' . e(service_url($lead)) . '">'
             . '<span class="feat__art"><img src="' . e(u('/assets/img/illu/' . $gk . '.webp'))
-            . '" alt="" width="640" height="560" loading="lazy" decoding="async"></span>'
+            . '" alt="' . e(GROUP_ALT[$gk] ?? '')
+            . '" width="640" height="560" loading="lazy" decoding="async"></span>'
             . '<h3>' . e($feat['title']) . '</h3>'
             . '<p>' . e($feat['short']) . '</p>'
             . (empty($feat['bullets']) ? '' :

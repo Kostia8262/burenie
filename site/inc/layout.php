@@ -25,6 +25,9 @@ function page_start(array $m): void
 <meta name="robots" content="noindex, follow">
 <?php endif; ?>
 <meta name="theme-color" content="#ffffff">
+<?php if (GSC_VERIFY !== ''): ?>
+<meta name="google-site-verification" content="<?= e(GSC_VERIFY) ?>">
+<?php endif; ?>
 <meta property="og:type" content="<?= e($m['ogtype'] ?? 'website') ?>">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="<?= e(SITE['name']) ?>">

@@ -114,6 +114,12 @@ switch ($seg[0] ?? '') {
         if (!isset(ARTICLES[$seg[1]])) not_found();
         view('article', ['slug' => $seg[1], 'art' => ARTICLES[$seg[1]]]);
 
+    case 'raboty':
+        view('works');
+
+    case 'garantiya':
+        view('warranty');
+
     case 'o-kompanii':
         view('about');
 

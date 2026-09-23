@@ -2538,3 +2538,63 @@ p {
     opacity: 0.12;
   }
 }
+
+/* ===================== наши работы ===================== */
+
+/* Снимки с объектов на /raboty/. Кадры вертикальные (4:5), поэтому колонки
+   уже, чем у карточек статей, а подпись идёт под фотографией, а не поверх:
+   на странице её читают, а не проглядывают, как в слайдере первого экрана. */
+
+.works {
+  display: grid;
+  gap: 1.1rem;
+}
+
+@media (min-width: 620px) {
+  .works {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1040px) {
+  .works {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.work {
+  margin: 0;
+  background: var(--s0);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--sh-1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.work__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 38%;
+}
+
+.work figcaption {
+  padding: clamp(1rem, 2vw, 1.35rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.work figcaption b {
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.work figcaption span {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
