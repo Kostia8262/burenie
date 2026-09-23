@@ -1686,6 +1686,12 @@ p {
     gap: 1.1rem;
   }
 
+  /* без этого колонка грида растягивается по max-content списка и страница
+     уезжает вбок вместе с чипами */
+  .sec--topo .split > * {
+    min-width: 0;
+  }
+
   .sec--topo .lead {
     font-size: 1rem;
   }
