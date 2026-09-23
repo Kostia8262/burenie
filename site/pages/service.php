@@ -31,6 +31,12 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title
     <div class="phead__txt">
       <h1 class="d1"><?= e($svc['h1']) ?></h1>
       <p class="lead"><?= e($svc['short']) ?></p>
+      <div class="phead__cta">
+        <a class="btn" href="#zayavka" data-lead-open>Рассчитать стоимость</a>
+        <a class="btn btn--ghost" href="<?= e(tel_href(main_phone())) ?>">
+          <?= icon('phone') ?><?= e(main_phone()) ?>
+        </a>
+      </div>
       <div class="phead__meta">
         <span>Донецк, Макеевка и вся ДНР</span>
         <span>Выезд и расчёт — <b>бесплатно</b></span>

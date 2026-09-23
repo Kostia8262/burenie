@@ -2198,11 +2198,20 @@ p {
   max-width: 56ch;
 }
 
+/* кнопки в шапке страницы: на услугу и город приходят из поиска, и до
+   боковой формы надо было прокрутить весь текст */
+.phead__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+}
+
 .phead__meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin-top: 1.6rem;
+  margin-top: 1.3rem;
 }
 
 .phead__meta span {

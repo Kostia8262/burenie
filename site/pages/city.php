@@ -27,6 +27,12 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
       Бурим и обустраиваем скважины в <?= e($case) ?><?= empty($city['home']) ? ' — выезжаем из Донецка' : '' ?>.
       Малогабаритная установка проходит в калитку, паспорт скважины и гарантия на работы.
     </p>
+    <div class="phead__cta">
+      <a class="btn" href="#zayavka" data-lead-open>Рассчитать стоимость</a>
+      <a class="btn btn--ghost" href="<?= e(tel_href(main_phone())) ?>">
+        <?= icon('phone') ?><?= e(main_phone()) ?>
+      </a>
+    </div>
     <div class="phead__meta">
       <span>Выезд и расчёт — <b>бесплатно</b></span>
       <span>Бурим круглый год</span>
