@@ -2198,6 +2198,20 @@ p {
   max-width: 56ch;
 }
 
+/* цена в шапке страницы цен: крупнее лида, но тише заголовка */
+.price-lead {
+  margin: 1.1rem 0 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  color: var(--ink);
+}
+
+.price-lead b {
+  font-weight: 700;
+  color: var(--or-600);
+}
+
 /* кнопки в шапке страницы: на услугу и город приходят из поиска, и до
    боковой формы надо было прокрутить весь текст */
 .phead__cta {

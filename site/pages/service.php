@@ -44,6 +44,9 @@ echo crumbs([['Главная', '/'], ['Услуги', '/uslugi/'], [$svc['title
         </a>
       </div>
       <div class="phead__meta">
+        <?php if (PRICES_CONFIRMED && $svc['group'] === 'burenie' && ($svc['unit'] ?? '') === 'метр'): ?>
+          <span>Проходка — <b>от <?= e(number_format(PRICE_DRILL_FROM, 0, ',', ' ')) ?> ₽</b> за метр</span>
+        <?php endif; ?>
         <span>Донецк, Макеевка и вся ДНР</span>
         <span>Выезд и расчёт — <b>бесплатно</b></span>
         <span>Паспорт скважины и гарантия</span>
