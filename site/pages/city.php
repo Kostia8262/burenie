@@ -117,7 +117,7 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
 <section class="sec sec--tight">
   <div class="wrap">
     <h2 class="h-minor">Что почитать перед бурением</h2>
-    <div class="posts">
+    <div class="posts posts--slider" tabindex="0" role="group" aria-label="Статьи о скважинах и воде">
       <?php foreach (CITY_READS as $s2): $a2 = ARTICLES[$s2]; ?>
         <a class="post" href="<?= e(article_url($s2)) ?>">
           <?= illu_of('art/' . $s2, 'post__art') ?>
