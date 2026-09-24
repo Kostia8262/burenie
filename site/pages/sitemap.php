@@ -23,6 +23,7 @@ $urls = [
     ['/', '1.0', CONTENT_UPDATED],
     ['/uslugi/', '0.9', CONTENT_UPDATED],
     ['/ceny/', '0.9', CONTENT_UPDATED],
+    ['/kalkulyator/', '0.8', CONTENT_UPDATED],
     ['/geografiya/', '0.8', CONTENT_UPDATED],
     ['/stati/', '0.8', articles_last_date()],
     ['/raboty/', '0.7', CONTENT_UPDATED],

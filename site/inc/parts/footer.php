@@ -76,6 +76,7 @@
         <ul style="margin-top:1.1rem">
           <li><a href="<?= e(u('/o-kompanii/')) ?>">О компании</a></li>
           <li><a href="<?= e(u('/ceny/')) ?>">Цены и расчёт</a></li>
+          <li><a href="<?= e(u('/kalkulyator/')) ?>">Калькулятор стоимости</a></li>
           <li><a href="<?= e(u('/geografiya/')) ?>">Где мы работаем</a></li>
           <li><a href="<?= e(u('/raboty/')) ?>">Наши работы</a></li>
           <li><a href="<?= e(u('/garantiya/')) ?>">Гарантия</a></li>

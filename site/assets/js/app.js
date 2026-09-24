@@ -269,3 +269,40 @@
     });
   });
 })();
+
+/* Калькулятор проходки. Считает только метры на цену метра — остальное в
+   смете зависит от участка, и придумывать его на клиенте нельзя. */
+(function () {
+  var box = document.querySelector("[data-calc]");
+  if (!box) return;
+
+  var rate = parseInt(box.dataset.rate, 10) || 0;
+  var range = box.querySelector("#calc-depth");
+  var outD = box.querySelector("[data-calc-depth]");
+  var outS = box.querySelector("[data-calc-sum]");
+  var gors = box.querySelectorAll("input[name=calc-gor]");
+  if (!range || !outD || !outS) return;
+
+  function money(n) {
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
+  function redraw() {
+    var m = parseInt(range.value, 10) || 0;
+    outD.textContent = m;
+    outS.textContent = money(m * rate);
+  }
+
+  Array.prototype.forEach.call(gors, function (g) {
+    g.addEventListener("change", function () {
+      if (!g.checked) return;
+      range.min = g.dataset.min;
+      range.max = g.dataset.max;
+      range.value = g.value;
+      redraw();
+    });
+  });
+
+  range.addEventListener("input", redraw);
+  redraw();
+})();

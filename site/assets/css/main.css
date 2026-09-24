@@ -2955,3 +2955,128 @@ p {
     height: 32px;
   }
 }
+
+
+/* ===================== калькулятор проходки ===================== */
+
+.calc {
+  margin: 1.75rem 0 2rem;
+  padding: clamp(1.1rem, 2.5vw, 1.6rem);
+  background: var(--s0);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+}
+
+.calc__row + .calc__row {
+  margin-top: 1.35rem;
+}
+
+.calc__label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  font-size: 0.97rem;
+  color: var(--ink-2);
+}
+
+.calc__opts {
+  display: grid;
+  gap: 0.6rem;
+}
+
+@media (min-width: 480px) {
+  .calc__opts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.calc__opt input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.calc__opt span {
+  display: block;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease), background 0.18s var(--ease);
+}
+
+.calc__opt b {
+  display: block;
+  color: var(--blue);
+  letter-spacing: -0.02em;
+}
+
+.calc__opt small {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.87rem;
+  color: var(--ink-3);
+}
+
+.calc__opt input:checked + span {
+  border-color: var(--blue);
+  background: var(--blue-05);
+}
+
+.calc__opt input:focus-visible + span {
+  outline: 2px solid var(--or);
+  outline-offset: 2px;
+}
+
+.calc__range {
+  width: 100%;
+  accent-color: var(--or);
+}
+
+.calc__out {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--ink-2);
+}
+
+.calc__out b {
+  font-size: 1.15rem;
+  color: var(--blue);
+}
+
+.calc__result {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.calc__rlabel {
+  display: block;
+  font-size: 0.93rem;
+  color: var(--ink-3);
+}
+
+.calc__sum {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--blue);
+}
+
+.calc__note {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-3);
+}
+
+.calc__warn {
+  margin: 1.25rem 0 0;
+  padding: 0.9rem 1rem;
+  background: var(--blue-05);
+  border-radius: var(--r);
+  font-size: 0.93rem;
+  line-height: 1.5;
+}

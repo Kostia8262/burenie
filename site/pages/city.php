@@ -77,14 +77,23 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
         известняковый — глубже 70. Но даже соседние улицы могут отличаться вдвое,
         поэтому глубину мы называем после выезда, а не по телефону. Хороший
         ориентир — скважины у соседей: если знаете их глубину, скажите, и мы уже
-        по телефону прикинем картину.
+        по телефону прикинем картину. Подробно про горизонты и про то, от чего
+        зависит глубина, мы написали в статье
+        <a href="<?= e(article_url('na-kakuyu-glubinu-burit')) ?>">на какую глубину
+        бурить</a>, а выбор между ними разобрали в статье
+        <a href="<?= e(article_url('pesok-ili-izvestnyak')) ?>">песок или
+        известняк</a>.
       </p>
 
       <h2>Как заказать</h2>
       <p>
         Позвоните <a href="<?= e(tel_href(main_phone())) ?>"><?= e(main_phone()) ?></a>
         или оставьте номер в форме. Инженер приедет, посмотрит участок и посчитает
-        смету — бесплатно и ни к чему вас не обязывая.
+        смету — бесплатно и ни к чему вас не обязывая. Чтобы понимать, из чего
+        она сложится, загляните в разбор
+        <a href="<?= e(article_url('skolko-stoit-skvazhina')) ?>">сколько стоит
+        скважина</a>, а прикинуть порядок суммы можно в
+        <a href="<?= e(u('/kalkulyator/')) ?>">калькуляторе</a>.
       </p>
     </article>
 
@@ -104,6 +113,26 @@ echo crumbs([['Главная', '/'], ['География', '/geografiya/'], [$
 </section>
 
 <?= faq_block($faq, 'Вопросы о бурении в ' . $case) ?>
+
+<section class="sec sec--tight">
+  <div class="wrap">
+    <h2 class="h-minor">Что почитать перед бурением</h2>
+    <div class="posts">
+      <?php foreach (CITY_READS as $s2): $a2 = ARTICLES[$s2]; ?>
+        <a class="post" href="<?= e(article_url($s2)) ?>">
+          <?= illu_of('art/' . $s2, 'post__art') ?>
+          <span class="post__meta">
+            <span class="post__topic"><?= e($a2['topic']) ?></span>
+            <span class="post__time"><?= read_time($s2) ?> мин</span>
+          </span>
+          <h3><?= e($a2['title']) ?></h3>
+          <p><?= e($a2['excerpt']) ?></p>
+          <span class="more">Читать<?= icon('arrow') ?></span>
+        </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
 
 <section class="sec sec--s1 sec--tight">
   <div class="wrap">

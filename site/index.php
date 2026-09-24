@@ -113,6 +113,9 @@ switch ($seg[0] ?? '') {
     case 'ceny':
         view('prices');
 
+    case 'kalkulyator':
+        view('calculator');
+
     case 'geografiya':
         if (!isset($seg[1])) view('geo');
         if (!isset(CITIES[$seg[1]])) not_found();
