@@ -178,17 +178,17 @@ h4 {
 }
 
 .d1 {
-  font-size: clamp(1.75rem, 4.2vw, 3.5rem);
+  font-size: clamp(1.62rem, 4.2vw, 3.5rem);
   letter-spacing: -0.038em;
 }
 
 .d2 {
-  font-size: clamp(1.5rem, 3.6vw, 3rem);
+  font-size: clamp(1.38rem, 3.6vw, 3rem);
   letter-spacing: -0.035em;
 }
 
 .d3 {
-  font-size: clamp(1.18rem, 2vw, 1.75rem);
+  font-size: clamp(1.1rem, 2vw, 1.75rem);
   line-height: 1.14;
 }
 
@@ -983,7 +983,7 @@ p {
   }
 
   .hero h1 {
-    font-size: 1.78rem;
+    font-size: 1.66rem;
   }
 
   .hero__slogan {
@@ -992,7 +992,7 @@ p {
 
   .hero__lead {
     margin-top: 0.85rem;
-    font-size: 0.98rem;
+    font-size: 0.94rem;
   }
 
   .badges {
@@ -1645,6 +1645,9 @@ p {
   display: block;
   width: 4.4rem;
   height: 4.4rem;
+  /* схемы шагов разного формата (200x157, 143x200 и т. д.), а рамка
+     квадратная — без contain телефон и метка выходили сплющенными */
+  object-fit: contain;
   margin: 0 0 0.55rem auto;
 }
 
@@ -2289,7 +2292,7 @@ p {
 }
 
 .prose h2 {
-  font-size: clamp(1.4rem, 2.1vw, 1.9rem);
+  font-size: clamp(1.3rem, 2.1vw, 1.9rem);
   margin-top: 2.6rem;
   margin-bottom: 0.85rem;
 }
@@ -2398,7 +2401,7 @@ p {
 /* цена в шапке страницы цен: крупнее лида, но тише заголовка */
 .price-lead {
   margin: 1.1rem 0 0;
-  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem);
   font-weight: 600;
   letter-spacing: -0.028em;
   color: var(--ink);
@@ -2450,7 +2453,7 @@ p {
 .cta h2 {
   color: #fff;
   max-width: 22ch;
-  font-size: clamp(1.45rem, 3vw, 2.5rem);
+  font-size: clamp(1.34rem, 3vw, 2.5rem);
 }
 
 .cta__in {
@@ -2879,80 +2882,81 @@ p {
 }
 
 /* ===================== телефон: тише кегль =====================
-   На 375 px базовый текст 17 px и подзаголовки 24–31 px заполняли экран
+   На 375 px базовый текст 17 px и подзаголовки 24-31 px заполняли экран
    целиком: строка держала 30 символов, до второго абзаца приходилось
-   листать. Уменьшаем кегль и сопутствующие детали, пропорции сохраняем.
-   Поля ввода не трогаем — ниже 16 px iOS зумит форму при фокусе. */
+   листать. Кегль снижен в два приёма, пропорции между ступенями те же.
+   Поля ввода не трогаем - ниже 16 px iOS зумит форму при фокусе,
+   и .field input держит свой 1rem независимо от body. */
 @media (max-width: 619.98px) {
   body {
-    font-size: 1rem;
-    line-height: 1.58;
+    font-size: 0.95rem;
+    line-height: 1.55;
   }
 
   .lead {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.5;
   }
 
   .h-minor {
-    font-size: 1.05rem;
-    margin-bottom: 1.15rem;
+    font-size: 0.99rem;
+    margin-bottom: 1.05rem;
   }
 
   h3.card-t,
   .post h2,
   .post h3 {
-    font-size: 1.05rem;
+    font-size: 0.99rem;
   }
 
   .feat p,
   .steps p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .steps h3 {
-    font-size: 1.01rem;
+    font-size: 0.96rem;
   }
 
   .prose h3 {
-    font-size: 1.08rem;
+    font-size: 1.02rem;
   }
 
   .faq summary {
-    font-size: 0.99rem;
-    padding: 1rem 3rem 1rem 1.15rem;
+    font-size: 0.94rem;
+    padding: 0.95rem 2.8rem 0.95rem 1.1rem;
   }
 
   .row b {
-    font-size: 0.98rem;
+    font-size: 0.93rem;
   }
 
   .corex__name {
-    font-size: 0.97rem;
+    font-size: 0.92rem;
   }
 
   .btn--lg {
-    font-size: 1rem;
-    padding: 1rem 1.7rem;
+    font-size: 0.97rem;
+    padding: 0.95rem 1.6rem;
   }
 
   .ftr__tel {
-    font-size: 1.14rem;
+    font-size: 1.08rem;
   }
 
   .dir__head h2 {
-    font-size: 1.28rem;
+    font-size: 1.18rem;
   }
 
   .feat h3,
   .form-card h2,
   .form-card h3 {
-    font-size: 1.12rem;
+    font-size: 1.05rem;
   }
 
   .ico--lg {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
 }
 
