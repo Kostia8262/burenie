@@ -178,17 +178,17 @@ h4 {
 }
 
 .d1 {
-  font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+  font-size: clamp(1.75rem, 4.2vw, 3.5rem);
   letter-spacing: -0.038em;
 }
 
 .d2 {
-  font-size: clamp(1.8rem, 3.6vw, 3rem);
+  font-size: clamp(1.5rem, 3.6vw, 3rem);
   letter-spacing: -0.035em;
 }
 
 .d3 {
-  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-size: clamp(1.18rem, 2vw, 1.75rem);
   line-height: 1.14;
 }
 
@@ -983,7 +983,7 @@ p {
   }
 
   .hero h1 {
-    font-size: 1.95rem;
+    font-size: 1.78rem;
   }
 
   .hero__slogan {
@@ -992,7 +992,7 @@ p {
 
   .hero__lead {
     margin-top: 0.85rem;
-    font-size: 1.02rem;
+    font-size: 0.98rem;
   }
 
   .badges {
@@ -1162,7 +1162,7 @@ p {
 }
 
 .dir__head h2 {
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-size: clamp(1.36rem, 2.4vw, 2rem);
 }
 
 .dir__head p {
@@ -1229,7 +1229,7 @@ p {
 }
 
 .feat h3 {
-  font-size: clamp(1.25rem, 1.9vw, 1.5rem);
+  font-size: clamp(1.2rem, 1.9vw, 1.5rem);
   letter-spacing: -0.028em;
 }
 
@@ -1957,7 +1957,7 @@ p {
 
 .form-card h2,
 .form-card h3 {
-  font-size: clamp(1.25rem, 1.9vw, 1.5rem);
+  font-size: clamp(1.2rem, 1.9vw, 1.5rem);
   margin-bottom: 0.5rem;
 }
 
@@ -2450,7 +2450,7 @@ p {
 .cta h2 {
   color: #fff;
   max-width: 22ch;
-  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-size: clamp(1.45rem, 3vw, 2.5rem);
 }
 
 .cta__in {
@@ -2876,4 +2876,82 @@ p {
 .answer dd {
   margin: 0;
   color: var(--ink);
+}
+
+/* ===================== телефон: тише кегль =====================
+   На 375 px базовый текст 17 px и подзаголовки 24–31 px заполняли экран
+   целиком: строка держала 30 символов, до второго абзаца приходилось
+   листать. Уменьшаем кегль и сопутствующие детали, пропорции сохраняем.
+   Поля ввода не трогаем — ниже 16 px iOS зумит форму при фокусе. */
+@media (max-width: 619.98px) {
+  body {
+    font-size: 1rem;
+    line-height: 1.58;
+  }
+
+  .lead {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .h-minor {
+    font-size: 1.05rem;
+    margin-bottom: 1.15rem;
+  }
+
+  h3.card-t,
+  .post h2,
+  .post h3 {
+    font-size: 1.05rem;
+  }
+
+  .feat p,
+  .steps p {
+    font-size: 0.95rem;
+  }
+
+  .steps h3 {
+    font-size: 1.01rem;
+  }
+
+  .prose h3 {
+    font-size: 1.08rem;
+  }
+
+  .faq summary {
+    font-size: 0.99rem;
+    padding: 1rem 3rem 1rem 1.15rem;
+  }
+
+  .row b {
+    font-size: 0.98rem;
+  }
+
+  .corex__name {
+    font-size: 0.97rem;
+  }
+
+  .btn--lg {
+    font-size: 1rem;
+    padding: 1rem 1.7rem;
+  }
+
+  .ftr__tel {
+    font-size: 1.14rem;
+  }
+
+  .dir__head h2 {
+    font-size: 1.28rem;
+  }
+
+  .feat h3,
+  .form-card h2,
+  .form-card h3 {
+    font-size: 1.12rem;
+  }
+
+  .ico--lg {
+    width: 32px;
+    height: 32px;
+  }
 }
