@@ -42,6 +42,10 @@ function page_start(array $m): void
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="<?= e(u('/favicon.ico')) ?>" sizes="32x32">
 <link rel="icon" href="<?= e(u('/assets/img/favicon.svg')) ?>" type="image/svg+xml">
+<?php /* Яндексу для значка в выдаче нужен SVG или растр от 120x120. SVG у нас
+         с медиазапросом на тёмную тему, и робот его не засчитал — отдаём ещё
+         и обычный PNG 512x512, он же лежит в манифесте. */ ?>
+<link rel="icon" href="<?= e(u('/assets/img/icon-512.png')) ?>" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="<?= e(u('/assets/img/touch-icon.png')) ?>">
 <link rel="manifest" href="<?= e(u('/manifest.webmanifest')) ?>">
 <link rel="preload" href="<?= e(u('/assets/fonts/onest-400-cyrillic.woff2')) ?>" as="font" type="font/woff2" crossorigin>
