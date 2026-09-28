@@ -47,7 +47,7 @@ const BANK = [
  * обсадная труба, обустройство и насос считаются отдельно — так и написано
  * на странице цен. Менять цифру здесь, она подставляется по всему сайту.
  */
-const PRICE_DRILL_FROM = 3000;
+const PRICE_DRILL_FROM = 4000;
 const PRICES_CONFIRMED = true;
 const STATS_CONFIRMED  = false;   // TODO: лет на рынке, число скважин
 
